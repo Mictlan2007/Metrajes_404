@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metrajes 404</title>
+    <meta
+      name="description"
+      content="Retro-style horror video archive inspired by classic early internet culture."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Orbitron:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="Metrajes 404 home">
+          <div class="brand-mark">M</div>
+          <div class="brand-copy">
+            <span class="brand-subtitle">Metrajes</span>
+            <strong>404</strong>
+          </div>
+        </div>
 
+        <nav class="topnav" aria-label="Main navigation">
+          <a href="#" class="active">Home</a>
+          <a href="#">Trending</a>
+          <a href="#">Uploads</a>
+          <a href="#">Archive</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="ghost-button">Browse</button>
+          <button class="primary-button">Upload</button>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <aside class="sidebar" aria-label="Sidebar navigation">
+          <div class="sidebar-section">
+            <h3>Explore</h3>
+            <ul>
+              <li class="active">For You</li>
+              <li>Following</li>
+              <li>Library</li>
+              <li>History</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Channels</h3>
+            <ul>
+              <li>Night Signals</li>
+              <li>Static Archive</li>
+              <li>Old Broadcast</li>
+              <li>Open Channel</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card">
+            <div class="card-badge">Nocturne Archive</div>
+            <p>
+              Recovered footage, cursed recordings, and the strange things people
+              forgot to delete.
+            </p>
+          </div>
+        </aside>
+
+        <main class="main-panel">
+          <section class="featured">
+            <div class="featured-copy">
+              <p class="eyebrow">Featured archive</p>
+              <h1>Midnight Transmission 7</h1>
+              <p class="lead">
+                A recovered webcam session from a channel that disappeared in 1998.
+                Something is still watching from the other side of the signal.
+              </p>
+
+              <div class="meta-row">
+                <span>2.8M views</span>
+                <span>•</span>
+                <span>2 days ago</span>
+                <span>•</span>
+                <span>HD</span>
+              </div>
+
+              <div class="cta-row">
+                <button class="primary-button">Watch now</button>
+                <button class="ghost-button">Save</button>
+              </div>
+            </div>
+
+            <div class="featured-video" aria-label="Featured video preview">
+              <div class="video-surface">
+                <div class="play-button" aria-hidden="true"></div>
+                <div class="video-overlay">
+                  <span class="overlay-badge">LIVE</span>
+                  <span class="duration">14:22</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="filter-row" aria-label="Video filters">
+            <button class="filter active">All uploads</button>
+            <button class="filter">Most watched</button>
+            <button class="filter">New this week</button>
+            <button class="filter">Creepypasta</button>
+          </section>
+
+          <section class="video-grid" id="videoGrid" aria-live="polite"></section>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
