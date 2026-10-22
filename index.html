@@ -246,7 +246,7 @@
       }
 
       .modal-box {
-        width: min(92vw, 1100px);
+        width: min(72vw, 860px);
         background: #0b1118;
         border: 1px solid rgba(255,255,255,0.14);
         border-radius: 12px;
@@ -258,13 +258,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 14px 16px;
+        padding: 10px 12px;
         border-bottom: 1px solid rgba(255,255,255,0.08);
         background: rgba(255,255,255,0.02);
       }
 
       .modal-title {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         color: #f0f0f0;
         white-space: nowrap;
         overflow: hidden;
@@ -276,9 +276,9 @@
         color: white;
         border: 1px solid rgba(255,255,255,0.15);
         border-radius: 6px;
-        width: 36px;
-        height: 36px;
-        font-size: 1.3rem;
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
         cursor: pointer;
       }
 
@@ -326,6 +326,10 @@
 
         .card {
           grid-template-columns: 220px 1fr;
+        }
+
+        .modal-box {
+          width: min(90vw, 720px);
         }
       }
     </style>
@@ -477,7 +481,6 @@
 
       function renderVideos(filter = "") {
         const query = filter.trim().toLowerCase();
-
         videoGrid.innerHTML = "";
 
         const filtered = videos.filter((video) =>
