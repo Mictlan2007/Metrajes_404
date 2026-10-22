@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,8 +12,6 @@
         --muted: #606060;
         --border: #d9d9d9;
         --youtube-red: #ff0000;
-        --bar: #e5e5e5;
-        --pill: #f2f2f2;
       }
 
       * { box-sizing: border-box; }
@@ -40,6 +38,7 @@
         height: 14px;
         position: relative;
       }
+
       .menu-icon span {
         position: absolute;
         left: 0;
@@ -48,6 +47,7 @@
         background: #333;
         border-radius: 2px;
       }
+
       .menu-icon span:nth-child(1) { top: 0; }
       .menu-icon span:nth-child(2) { top: 6px; }
       .menu-icon span:nth-child(3) { top: 12px; }
@@ -67,6 +67,7 @@
         border-radius: 6px;
         position: relative;
       }
+
       .brand-mark::before {
         content: "";
         position: absolute;
@@ -87,7 +88,7 @@
 
       .layout {
         display: grid;
-        grid-template-columns: minmax(0, 2.3fr) minmax(250px, 0.9fr);
+        grid-template-columns: minmax(0, 2.3fr) minmax(260px, 0.9fr);
         gap: 20px;
       }
 
@@ -105,89 +106,12 @@
         overflow: hidden;
       }
 
-      video {
+      .video-shell iframe {
         width: 100%;
         height: 100%;
+        border: 0;
         display: block;
         background: #000;
-        object-fit: cover;
-      }
-
-      .player-overlay {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05));
-      }
-
-      .controls {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 10px 14px 12px;
-        display: grid;
-        gap: 10px;
-        pointer-events: auto;
-      }
-
-      .progress-wrap {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .progress {
-        flex: 1;
-        position: relative;
-        height: 4px;
-        background: rgba(255,255,255,0.35);
-        border-radius: 999px;
-        overflow: hidden;
-      }
-
-      .progress-bar {
-        position: absolute;
-        inset: 0 auto 0 0;
-        width: 0%;
-        background: var(--youtube-red);
-      }
-
-      .time {
-        color: white;
-        font-size: 12px;
-        min-width: 54px;
-        text-align: right;
-      }
-
-      .button-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .left-controls, .right-controls {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .control-btn {
-        appearance: none;
-        border: 0;
-        background: rgba(255,255,255,0.12);
-        border-radius: 50%;
-        width: 34px;
-        height: 34px;
-        display: grid;
-        place-items: center;
-        color: white;
-        cursor: pointer;
-        font-weight: 700;
-      }
-
-      .control-btn:hover {
-        background: rgba(255,255,255,0.2);
       }
 
       .title-box {
@@ -232,8 +156,8 @@
         gap: 10px;
         padding: 6px;
         border: 1px solid transparent;
-        cursor: pointer;
         border-radius: 6px;
+        cursor: pointer;
         transition: background 0.15s ease, border-color 0.15s ease;
       }
 
@@ -259,7 +183,7 @@
         right: 8px;
         bottom: 8px;
         color: white;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.55);
         width: 22px;
         height: 22px;
         border-radius: 50%;
@@ -316,143 +240,107 @@
       <div class="layout">
         <section class="video-panel">
           <div class="video-shell">
-            <video id="video" playsinline preload="metadata" muted>
-              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-            </video>
-
-            <div class="player-overlay"></div>
-
-            <div class="controls">
-              <div class="progress-wrap">
-                <div class="progress" aria-label="Video progress">
-                  <div id="progressBar" class="progress-bar"></div>
-                </div>
-                <div id="timeLabel" class="time">0:00 / 0:00</div>
-              </div>
-
-              <div class="button-row">
-                <div class="left-controls">
-                  <button id="playPause" class="control-btn" aria-label="Play or pause">❚❚</button>
-                  <button id="mute" class="control-btn" aria-label="Mute">🔊</button>
-                </div>
-
-                <div class="right-controls">
-                  <button class="control-btn" aria-label="Volume">⤢</button>
-                </div>
-              </div>
-            </div>
+            <iframe
+              id="videoFrame"
+              src=""
+              title="Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
           </div>
 
           <div class="title-box">
-            <h1 id="currentTitle" class="video-title">A slow motion mountain river</h1>
-            <div class="meta">4,120 views • 3 days ago</div>
+            <h1 id="currentTitle" class="video-title">Loading...</h1>
+            <div class="meta">11 videos • playlist</div>
           </div>
         </section>
 
         <aside class="sidebar">
           <div class="sidebar-title">Up next</div>
-
-          <div class="video-list">
-            <div class="video-item active" data-title="A slow motion mountain river" data-src="https://www.w3schools.com/html/mov_bbb.mp4" style="--thumb:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80')">
-              <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80')"></div>
-              <div class="video-copy">
-                <h4>A slow motion mountain river</h4>
-                <span>4,120 views</span>
-              </div>
-            </div>
-
-            <div class="video-item" data-title="City lights at sunset" data-src="https://www.w3schools.com/html/movie.mp4" style="--thumb:url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&q=80')">
-              <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&q=80')"></div>
-              <div class="video-copy">
-                <h4>City lights at sunset</h4>
-                <span>2,801 views</span>
-              </div>
-            </div>
-
-            <div class="video-item" data-title="Forest trail in the morning" data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" style="--thumb:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80')">
-              <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80')"></div>
-              <div class="video-copy">
-                <h4>Forest trail in the morning</h4>
-                <span>8,204 views</span>
-              </div>
-            </div>
-          </div>
+          <div id="videoList" class="video-list"></div>
         </aside>
       </div>
     </main>
 
     <script>
-      const video = document.getElementById("video");
-      const playPauseBtn = document.getElementById("playPause");
-      const muteBtn = document.getElementById("mute");
-      const progressBar = document.getElementById("progressBar");
-      const timeLabel = document.getElementById("timeLabel");
-      const currentTitle = document.getElementById("currentTitle");
-      const videoItems = document.querySelectorAll(".video-item");
+      const videos = [
+        { title: "Tengo Miedo!", url: "https://youtu.be/p7zevPed3Ss?si=FB4jr-6bAI_FypnM" },
+        { title: "Keyboard Cat! - EL ORIGINAL!", url: "https://youtu.be/J---aiyznGQ?si=7wKKtr93bBLFnoHg" },
+        { title: "Mirada Dramática", url: "https://youtu.be/y8Kyi0WNg40?si=16-cXDdtcttkvp7f" },
+        { title: "Aparición de un Duende", url: "https://youtu.be/xPghfRHZUFs?si=Lh0jyra4t4DHI80n" },
+        { title: "Body Of A Pig", url: "https://youtu.be/X72xDpv898Y?si=URfompjMCPqXnNYF" },
+        { title: "“Dining Room” o “There is Nothing”", url: "https://youtu.be/ns1SGo3WCF4?si=gpxBpzMSae3ORL7O" },
+        { title: "Experimentos sobre la Reanimación de Organismos", url: "https://youtu.be/KDqh-r8TQgs?si=yjgnS6cUqokESQQQ" },
+        { title: "Hombre se pierde en las Catacumbas de París Parte 1 de 2", url: "https://youtu.be/yxJkMlqYrys?si=fiHjDgGhfFq4tdDF" },
+        { title: "Max Headroom 1987 Incidente de Intrusión en la Señal de Transmisión", url: "https://youtu.be/oqgeM6rWSkw?si=RyZWanv83laKocdu" },
+        { title: "Hombre se pierde en las Catacumbas de París Parte 2 de 2", url: "https://youtu.be/Hi5iKa3DFnM?si=Wf6AZzm9KwX_uPFg" },
+        { title: "EXN OFICIAL: LA PASCUALITA DE CHIHUAHUA", url: "https://youtu.be/cUG6MSkIfFY?si=Elgz-DybWD6LPanA" }
+      ];
 
-      function formatTime(seconds) {
-        if (!Number.isFinite(seconds)) return "0:00";
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${String(secs).padStart(2, "0")}`;
-      }
+      function getVideoIdFromUrl(url) {
+        try {
+          const parsed = new URL(url);
 
-      function updateProgress() {
-        const percent = video.duration ? (video.currentTime / video.duration) * 100 : 0;
-        progressBar.style.width = `${percent}%`;
+          if (parsed.hostname.includes("youtu.be")) {
+            return parsed.pathname.replace("/", "");
+          }
 
-        const total = video.duration ? formatTime(video.duration) : "0:00";
-        const current = formatTime(video.currentTime);
-        timeLabel.textContent = `${current} / ${total}`;
-      }
+          if (parsed.hostname.includes("youtube.com")) {
+            const v = parsed.searchParams.get("v");
+            if (v) return v;
+          }
 
-      function togglePlay() {
-        if (video.paused) {
-          video.play();
-          playPauseBtn.textContent = "❚❚";
-        } else {
-          video.pause();
-          playPauseBtn.textContent = "▶";
+          // fallback for weird cases
+          return url;
+        } catch (e) {
+          return url;
         }
       }
 
-      function toggleMute() {
-        video.muted = !video.muted;
-        muteBtn.textContent = video.muted ? "🔇" : "🔊";
+      function getEmbedUrl(url) {
+        const videoId = getVideoIdFromUrl(url);
+        return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
       }
 
-      playPauseBtn.addEventListener("click", togglePlay);
-      muteBtn.addEventListener("click", toggleMute);
+      const videoList = document.getElementById("videoList");
+      const currentTitle = document.getElementById("currentTitle");
+      const videoFrame = document.getElementById("videoFrame");
 
-      video.addEventListener("play", () => {
-        playPauseBtn.textContent = "❚❚";
-      });
+      function renderPlaylist() {
+        videos.forEach((video, index) => {
+          const item = document.createElement("div");
+          item.className = "video-item" + (index === 0 ? " active" : "");
 
-      video.addEventListener("pause", () => {
-        playPauseBtn.textContent = "▶";
-      });
+          const videoId = getVideoIdFromUrl(video.url);
 
-      video.addEventListener("timeupdate", updateProgress);
-      video.addEventListener("loadedmetadata", updateProgress);
-      video.addEventListener("ended", () => {
-        video.currentTime = 0;
-        playPauseBtn.textContent = "▶";
-      });
+          item.innerHTML = `
+            <div class="thumb" style="background-image:url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg')"></div>
+            <div class="video-copy">
+              <h4>${video.title}</h4>
+              <span>Video</span>
+            </div>
+          `;
 
-      videoItems.forEach(item => {
-        item.addEventListener("click", () => {
-          videoItems.forEach(v => v.classList.remove("active"));
-          item.classList.add("active");
+          item.addEventListener("click", () => {
+            document.querySelectorAll(".video-item").forEach(el => el.classList.remove("active"));
+            item.classList.add("active");
 
-          const title = item.dataset.title;
-          const src = item.dataset.src;
+            currentTitle.textContent = video.title;
+            videoFrame.src = getEmbedUrl(video.url);
+          });
 
-          currentTitle.textContent = title;
-          video.src = src;
-          video.load();
-          video.play();
+          videoList.appendChild(item);
         });
-      });
+      }
+
+      function initFirstVideo() {
+        const first = videos[0];
+        currentTitle.textContent = first.title;
+        videoFrame.src = getEmbedUrl(first.url);
+      }
+
+      renderPlaylist();
+      initFirstVideo();
     </script>
   </body>
-  </html>
+</html>
