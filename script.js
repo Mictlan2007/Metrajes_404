@@ -24,4 +24,3 @@ filterButtons.forEach((button) => {
 });
 
 searchInput.addEventListener('input', applyFilters);
-
