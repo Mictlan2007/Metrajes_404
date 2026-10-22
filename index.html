@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metrajes 404 | RetroTube</title>
+    <meta
+      name="description"
+      content="Retro video portal inspired by the early YouTube interface."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-group" aria-label="Brand">
+          <div class="logo-icon">▶</div>
+          <div class="brand-copy">
+            <span class="brand-name">Metrajes 404</span>
+            <small>RetroTube</small>
+          </div>
+        </div>
+
+        <nav class="head-nav" aria-label="Main navigation">
+          <a href="#">Home</a>
+          <a href="#">Trending</a>
+          <a href="#">Subscriptions</a>
+          <a href="#">Library</a>
+        </nav>
+
+        <div class="toolbar-search">
+          <input type="search" id="video-search" placeholder="Search videos" aria-label="Search videos" />
+          <button type="button">Search</button>
+        </div>
+
+        <div class="user-box" aria-label="User panel">M</div>
+      </header>
+
+      <div class="content-grid">
+        <aside class="sidebar" aria-label="Sidebar menu">
+          <section>
+            <p class="sidebar-title">Browse</p>
+            <ul>
+              <li class="active">Featured</li>
+              <li>Music</li>
+              <li>Gaming</li>
+              <li>Tech</li>
+              <li>Comedy</li>
+              <li>Film & TV</li>
+            </ul>
+          </section>
+
+          <section>
+            <p class="sidebar-title">Subscriptions</p>
+            <ul>
+              <li>Pixel Party</li>
+              <li>Desk Setup</li>
+              <li>Controller Club</li>
+              <li>After Hours</li>
+            </ul>
+          </section>
+
+          <section>
+            <p class="sidebar-title">Top Channels</p>
+            <ul>
+              <li>Retro Arcade</li>
+              <li>Net Culture</li>
+              <li>Web Reloaded</li>
+              <li>Indie Loop</li>
+            </ul>
+          </section>
+        </aside>
+
+        <main class="main-panel">
+          <section class="hero" aria-label="Featured video">
+            <div class="hero-copy">
+              <p class="eyebrow">Featured</p>
+              <h1>Pixel Dreams: The 2007 Internet Revival</h1>
+              <p>
+                A nostalgic run through old-school flash games, late-night downloads,
+                and the warm glow of every homepage from the golden web era.
+              </p>
+              <div class="cta-row">
+                <button type="button" class="primary-btn">Watch now</button>
+                <button type="button" class="secondary-btn">Browse archives</button>
+              </div>
+            </div>
+
+            <div class="hero-screen" aria-hidden="true">
+              <div class="screen-frame">
+                <div class="screen-overlay">
+                  <span class="play-pill">▶ Play</span>
+                  <span class="screen-time">04:32</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="filters" aria-label="Video filters">
+            <button type="button" class="filter-pill active" data-filter="all">All</button>
+            <button type="button" class="filter-pill" data-filter="gaming">Gaming</button>
+            <button type="button" class="filter-pill" data-filter="music">Music</button>
+            <button type="button" class="filter-pill" data-filter="tech">Tech</button>
+            <button type="button" class="filter-pill" data-filter="comedy">Comedy</button>
+          </section>
+
+          <section class="video-grid" aria-live="polite">
+            <article class="video-card" data-category="gaming" data-title="Pixel Quest: Dungeon Run">
+              <div class="thumb thumb-one"><span>04:22</span></div>
+              <div class="card-copy">
+                <div class="meta-row">
+                  <span class="channel">Pixel Party</span>
+                  <span class="views">1.2M views</span>
+                </div>
+                <h3>Pixel Quest: Dungeon Run</h3>
+                <p>Classic RPG vibes, pixel art, and all the charm of 2000s internet gaming.</p>
+              </div>
+            </article>
+
+            <article class="video-card" data-category="music" data-title="Synthwave Sunset Session">
+              <div class="thumb thumb-two"><span>06:11</span></div>
+              <div class="card-copy">
+                <div class="meta-row">
+                  <span class="channel">Night Echo</span>
+                  <span class="views">840K views</span>
+                </div>
+                <h3>Synthwave Sunset Session</h3>
+                <p>Dreamlike beats, chrome textures, and a perfect vintage-tech playlist.</p>
+              </div>
+            </article>
+
+            <article class="video-card" data-category="tech" data-title="How the Early Web Worked">
+              <div class="thumb thumb-three"><span>09:48</span></div>
+              <div class="card-copy">
+                <div class="meta-row">
+                  <span class="channel">Web Reloaded</span>
+                  <span class="views">2.1M views</span>
+                </div>
+                <h3>How the Early Web Worked</h3>
+                <p>From dial-up wonders to Flash websites, this is the original digital frontier.</p>
+              </div>
+            </article>
+
+            <article class="video-card" data-category="comedy" data-title="Cat vs Download Bar">
+              <div class="thumb thumb-four"><span>03:41</span></div>
+              <div class="card-copy">
+                <div class="meta-row">
+                  <span class="channel">Lo-fi Laughs</span>
+                  <span class="views">670K views</span>
+                </div>
+                <h3>Cat vs Download Bar</h3>
+                <p>One cat, one slow connection, and a painfully familiar desktop ritual.</p>
+              </div>
+            </article>
+
+            <article class="video-card" data-category="gaming" data-title="Lan Party: The Last Controller">
+              <div class="thumb thumb-five"><span>08:02</span></div>
+              <div class="card-copy">
+                <div class="meta-row">
+                  <span class="channel">Controller Club</span>
+                  <span class="views">1.7M views</span>
+                </div>
+                <h3>Lan Party: The Last Controller</h3>
+                <p>High-energy co-op chaos and classic couch gaming nights from the 2000s.</p>
+              </div>
+            </article>
+
+            <article class="video-card" data-category="music" data-title="Garage Mix: 2005 Throwback">
+              <div class="thumb thumb-six"><span>05:26</span></div>
+              <div class="card-copy">
+                <div class="meta-row">
+                  <span class="channel">After Hours</span>
+                  <span class="views">950K views</span>
+                </div>
+                <h3>Garage Mix: 2005 Throwback</h3>
+                <p>Crushed basslines, hidden gems, and a warm nostalgia-rich radio session.</p>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
