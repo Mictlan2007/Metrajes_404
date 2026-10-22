@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>METRAJES_404</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=VT323&display=swap" rel="stylesheet" />
 
     <style>
       :root{
@@ -20,7 +20,6 @@
         --blue: #5a9cf7;
         --blue-2: #3d86ff;
         --shadow: rgba(0,0,0,0.86);
-        --search-bg: rgba(255,255,255,0.02);
       }
 
       * { box-sizing: border-box; }
@@ -69,8 +68,7 @@
         white-space: nowrap;
       }
 
-      .logo .num {
-        font-family: "Creepster", cursive;
+      .logo span {
         display: inline-block;
         transform: skewX(-7deg);
       }
@@ -80,13 +78,13 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: 20px;
+        gap: 18px;
       }
 
       .searchbar {
         flex: 1;
-        max-width: 980px;
         height: 56px;
+        max-width: 980px;
         border: 1px solid rgba(255,255,255,0.12);
         background: rgba(255,255,255,0.02);
         border-radius: 6px;
@@ -94,14 +92,13 @@
         align-items: center;
         padding: 0 18px;
         margin-left: 8px;
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
       }
 
       .searchbar input {
+        width: 100%;
         background: transparent;
         border: none;
         outline: none;
-        flex: 1;
         font-family: "Special Elite", monospace;
         font-size: 2rem;
         color: rgba(255,255,255,0.82);
@@ -121,9 +118,8 @@
         font-size: 1.08rem;
         font-family: "Special Elite", monospace;
         cursor: pointer;
-        margin-left: 14px;
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
-        transition: 0.15s ease;
+        margin-left: 10px;
+        transition: background 0.15s ease;
       }
 
       .search-btn:hover {
@@ -147,23 +143,16 @@
         text-shadow: 0 0 4px rgba(105,160,255,0.22);
       }
 
-      .nav .upload {
-        margin-left: 8px;
-      }
-
       .content {
         padding: 24px 16px 26px;
-        display: flex;
-        flex-direction: column;
-        gap: 22px;
       }
 
       .video-grid {
+        width: min(100%, 1780px);
+        margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 22px 28px;
-        width: min(100%, 1780px);
-        margin: 0 auto;
       }
 
       .card {
@@ -175,6 +164,13 @@
         border-radius: 10px;
         overflow: hidden;
         box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+        cursor: pointer;
+        transition: transform 0.12s ease, border-color 0.12s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255,255,255,0.2);
       }
 
       .thumb {
@@ -189,7 +185,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(to right, rgba(0,0,0,0.12), rgba(0,0,0,0.0));
+        background: linear-gradient(to right, rgba(0,0,0,0.12), rgba(0,0,0,0.02));
       }
 
       .meta {
@@ -235,8 +231,68 @@
         font-weight: normal;
       }
 
-      .muted {
-        color: rgba(255,255,255,0.9);
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 5, 9, 0.84);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+      }
+
+      .modal.open {
+        display: flex;
+      }
+
+      .modal-box {
+        width: min(92vw, 1100px);
+        background: #0b1118;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        overflow: hidden;
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.02);
+      }
+
+      .modal-title {
+        font-size: 1.2rem;
+        color: #f0f0f0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .close-btn {
+        background: transparent;
+        color: white;
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 6px;
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+
+      .video-frame {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+      }
+
+      .video-frame iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
 
       @media (max-width: 1100px) {
@@ -277,68 +333,195 @@
   <body>
     <div class="page">
       <header class="topbar">
-        <div class="logo"><span class="num">METRAJES_404</span></div>
+        <div class="logo"><span>METRAJES_404</span></div>
 
         <div class="search-wrap">
           <div class="searchbar">
-            <input type="text" placeholder="Search" aria-label="Search" />
+            <input id="searchInput" type="text" placeholder="Search" aria-label="Search" />
           </div>
           <button class="search-btn">Search</button>
         </div>
 
         <nav class="nav" aria-label="Main navigation">
-          <a href="#" class="upload">Upload</a>
+          <a href="#">Upload</a>
           <a href="#">Sign in</a>
         </nav>
       </header>
 
       <main class="content">
-        <section class="video-grid">
-          <article class="card">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="meta">
-              <div class="title-pill">La Caída de Edgar</div>
-              <div class="source">
-                <span class="label">YouTube</span>
-                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="meta">
-              <div class="title-pill">muñeca mueve cabeza</div>
-              <div class="source">
-                <span class="label">YouTube</span>
-                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="meta">
-              <div class="title-pill">Username:666</div>
-              <div class="source">
-                <span class="label">YouTube</span>
-                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="meta">
-              <div class="title-pill">1980s PSA - "We're Not Candy!"</div>
-              <div class="source">
-                <span class="label">YouTube</span>
-                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
-              </div>
-            </div>
-          </article>
-        </section>
+        <section id="videoGrid" class="video-grid"></section>
       </main>
     </div>
+
+    <div id="videoModal" class="modal" aria-hidden="true">
+      <div class="modal-box">
+        <div class="modal-header">
+          <div id="modalTitle" class="modal-title">Video</div>
+          <button id="closeModal" class="close-btn" aria-label="Close video">×</button>
+        </div>
+        <div class="video-frame">
+          <iframe
+            id="playerFrame"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            title="Embedded video"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const videos = [
+        { title: "Tengo Miedo!", url: "https://youtu.be/p7zevPed3Ss?si=FB4jr-6bAI_FypnM" },
+        { title: "Keyboard Cat! - EL ORIGINAL!", url: "https://youtu.be/J---aiyznGQ?si=7wKKtr93bBLFnoHg" },
+        { title: "Mirada Dramática", url: "https://youtu.be/y8Kyi0WNg40?si=16-cXDdtcttkvp7f" },
+        { title: "Aparición de un Duende", url: "https://youtu.be/xPghfRHZUFs?si=Lh0jyra4t4DHI80n" },
+        { title: "Body Of A Pig", url: "https://youtu.be/X72xDpv898Y?si=URfompjMCPqXnNYF" },
+        { title: "“Dining Room” o “There is Nothing”", url: "https://youtu.be/ns1SGo3WCF4?si=gpxBpzMSae3ORL7O" },
+        { title: "Experimentos sobre la Reanimación de Organismos", url: "https://youtu.be/KDqh-r8TQgs?si=yjgnS6cUqokESQQQ" },
+        { title: "Hombre se pierde en las Catacumbas de París Parte 1 de 2", url: "https://youtu.be/yxJkMlqYrys?si=fiHjDgGhfFq4tdDF" },
+        { title: "Max Headroom 1987 Incidente de Intrusión en la Señal de Transmisión", url: "https://youtu.be/oqgeM6rWSkw?si=RyZWanv83laKocdu" },
+        { title: "Hombre se pierde en las Catacumbas de París Parte 2 de 2", url: "https://youtu.be/Hi5iKa3DFnM?si=Wf6AZzm9KwX_uPFg" },
+        { title: "EXN OFICIAL: LA PASCUALITA DE CHIHUAHUA", url: "https://youtu.be/cUG6MSkIfFY?si=Elgz-DybWD6LPanA" },
+        { title: "Fantasma gritando en hotel embrujado - VERSIÓN COMPLETA", url: "https://youtu.be/BobA5ujHkvU?si=QSmSW3y77KCqtEtY" },
+        { title: "DEMONIOS REALES CAPTADOS EN CÁMARA", url: "https://youtu.be/oEVfREVGcaY?si=QlM-2LIgXBmG-Kgf" },
+        { title: "LUISON EN PARAGUAY", url: "https://youtu.be/L66UNoHyuag?si=uEzpX7TG3-2kDsj6" },
+        { title: "My Ghoul Jackson", url: "https://youtu.be/C8pOvjf6G-o?si=mB0o4prXHymM0zL6" },
+        { title: "Who's Hungry?", url: "https://youtu.be/8srEvrF90-s?si=T2kr8-pGzKltPK5V" },
+        { title: "Comercial Japones", url: "https://youtu.be/oFvtqlny43M?si=1l2EfxhuxhhoaWxD" },
+        { title: "Celulares Bailando", url: "https://youtu.be/fOq6Ydi9JEg?si=LYKbb1PnuwbovZRr" },
+        { title: "Baile de marge", url: "https://youtu.be/0r0gvDBKcfg?si=EAK-zshrv6vFzpEa" },
+        { title: "tumbas por aquí, tumbas por allá", url: "https://youtu.be/taIuoci1t00?si=utRMqpTt2V7HbK40" },
+        { title: "Criatura extraña de túnel", url: "https://youtu.be/-Cve-in80sk?si=fvmshU_bvpsAUg9b" },
+        { title: "Fantasma de Guerra Cívil", url: "https://youtu.be/LjcnXrDBmMM?si=5z04ovSgxWU41aqf" },
+        { title: "Terror en el cementerio (escenas impactantes )", url: "https://youtu.be/BU6wkoU9V5o?si=-CNwdhPi3U1nte9A" },
+        { title: "Fantasma captado por cámara de seguridad", url: "https://youtu.be/cy9OcV3MAKM?si=GSCi5WYxtN41GGpk" },
+        { title: "who wants to gnaw on human bones", url: "https://youtu.be/jdRCNM2k42o?si=5sPrNwr7IwOFzUfT" },
+        { title: "Don't Hug me I'm Scared", url: "https://youtu.be/9C_HReR_McQ?si=bnSH144dEp_3E3o8" },
+        { title: "Salad Fingers 1", url: "https://youtu.be/M3iOROuTuMA?si=Bzy3GKVQTkQdKUN2" },
+        { title: "Un Día en el Infierno/A Day in Hell (2003)", url: "https://youtu.be/YtXFudBlCCc?si=T4zqsMZAZdUzEB7l" },
+        { title: "Globo Inquietante de Bob Esponja", url: "https://youtu.be/h4As3nxIepU?si=5Y5xb4-7uZ6xrFjs" },
+        { title: "Bob esponja cae", url: "https://youtu.be/nZVf7Ic5mLw?si=ZBK88R3ZiYy5Cum6" },
+        { title: "Little Baby's Ice Cream “Este es un Momento Especial”", url: "https://youtu.be/erh2ngRZxs0?si=lZhxD57ZNjlyni7E" },
+        { title: "Five Nights At Freddy's", url: "https://youtu.be/RP4UTOek0-Y?si=QGcaGdCLGefguJSa" },
+        { title: "Five Nights At Freddy's 2 Trailer", url: "https://youtu.be/lVPONdZBh6s?si=71qEmXIJPnPTn-Te" },
+        { title: "Five Nights At Freddy's 3 Teaser Trailer", url: "https://youtu.be/hdHlIy0W4uU?si=J5x5jfsIj3T4liCe" },
+        { title: "Five Nights At Freddy's 4 Trailer", url: "https://youtu.be/A-taWymx1WI?si=B7jQ-3Z8v0vdB26x" },
+        { title: "Sister Location Trailer 1", url: "https://youtu.be/Uw4-bZkxyKQ?si=Zthf-0JLmJ1kqjeZ" },
+        { title: "Five Nights At Freddy's gameplay", url: "https://youtu.be/GS-VcKmK7Gc?si=WDh-hXd4KTXsIOwq" },
+        { title: "OTREVDAMINA", url: "https://youtu.be/3wRaQOiAyOM?si=xXG1fTGpIaS1X1pK" },
+        { title: "SCP 096", url: "https://youtu.be/WcmE8IGh1kg?si=FlXhzUmCX-Lbve_x" },
+        { title: "ROMANCE DE LA LUNA LUNA Carmen París", url: "https://youtu.be/Z4eLNavYOIg?si=9f2uGIyovBBaytP0" },
+        { title: "tutoiral", url: "https://youtu.be/wvHa2y-pKD8?si=1AOKe1HKa0UBOYXQ" },
+        { title: "gato se da cuenta de que lo graban", url: "https://youtu.be/CIL-Y7R-B7M?si=fSy-89sH_sERhj8w" },
+        { title: "CreepyPasta: Greatest Show UnEarthed", url: "https://youtu.be/fTU96mlaPq4?si=XJDJAjwmOvyj75n9" },
+        { title: "Actividad Paranormal en el colegio", url: "https://youtu.be/qAYChc2tXmk?si=XhRVLUwtMcQr7JRI" },
+        { title: "Slimyswampghost cryptids (criptidos)", url: "https://youtu.be/bHQFazMeeVM?si=7hz2YeMWSQdGRMx-" },
+        { title: "Avistamiento de Long Horse", url: "https://youtu.be/93egnzerE3s?si=uPe0Bfr0FSdDTZdT" },
+        { title: "lugares extrañamente familiares con música inquietante", url: "https://youtu.be/VqZEfqoTA7M?si=Mf5CY4D9DUqDpsLD" },
+        { title: "Imágenes Inquietantes con Música Inquietante (Unnerving Images with Unnerving music)", url: "https://youtu.be/eYbvNYmDH2E?si=OpTd0fy9-P-F6p2y" },
+        { title: "“El Charro Negro” Leyenda Captada en Cámara", url: "https://youtu.be/zaG-iZuTm5U?si=ASyZ9Qc0Y88rFRIF" },
+        { title: "LOSTLOCKED…", url: "https://youtu.be/yLov8IZBkfg?si=HMBHxOAjBDU0bgVn" },
+        { title: "Canal 5 Al Servicio de la Comunidad", url: "https://youtu.be/E7dh3LgnVPs?si=xeQhwIUqB4iC1phQ" },
+        { title: "Canal 5 Al Servicio de la Comunidad 2001", url: "https://youtu.be/FyvZ87HPFrk?si=Zuk5oagGCWXfH3NC" },
+        { title: "CORNERFOLK | The Monument Mythos", url: "https://youtu.be/SzSMHFFRi8I?si=bt-DcDHbSFoSH2V_" },
+        { title: "Petscop 15", url: "https://youtu.be/PiH04RGXYKo?si=xQ1rlgR_2kYA4JIp" },
+        { title: "Policía de Arabia Saudita se encuentran a una Bruja Real", url: "https://youtu.be/Hfp-tcfMOdU?si=BOqkmB7cXXNHO6Qf" },
+        { title: "la mona bruja en Nicaragua", url: "https://youtu.be/ui1A31-xc44?si=RBesl3x889H647hF" },
+        { title: "El Silbón en Colombia", url: "https://youtu.be/a4N40cQeWBc?si=gdCg_NkjsZCDXyWn" }
+      ];
+
+      const videoGrid = document.getElementById("videoGrid");
+      const searchInput = document.getElementById("searchInput");
+      const videoModal = document.getElementById("videoModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const playerFrame = document.getElementById("playerFrame");
+      const closeModal = document.getElementById("closeModal");
+
+      function getVideoIdFromUrl(url) {
+        try {
+          const parsed = new URL(url);
+
+          if (parsed.hostname.includes("youtu.be")) {
+            return parsed.pathname.replace("/", "");
+          }
+
+          if (parsed.hostname.includes("youtube.com")) {
+            const v = parsed.searchParams.get("v");
+            if (v) return v;
+          }
+
+          return "";
+        } catch (err) {
+          return "";
+        }
+      }
+
+      function getEmbedUrl(url) {
+        const id = getVideoIdFromUrl(url);
+        return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      }
+
+      function openModal(video) {
+        modalTitle.textContent = video.title;
+        playerFrame.src = getEmbedUrl(video.url);
+        videoModal.classList.add("open");
+        videoModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeVideoModal() {
+        videoModal.classList.remove("open");
+        videoModal.setAttribute("aria-hidden", "true");
+        playerFrame.src = "";
+      }
+
+      function renderVideos(filter = "") {
+        const query = filter.trim().toLowerCase();
+
+        videoGrid.innerHTML = "";
+
+        const filtered = videos.filter((video) =>
+          video.title.toLowerCase().includes(query)
+        );
+
+        filtered.forEach((video) => {
+          const card = document.createElement("article");
+          card.className = "card";
+          const videoId = getVideoIdFromUrl(video.url);
+
+          card.innerHTML = `
+            <div class="thumb" style="background-image: url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg');"></div>
+            <div class="meta">
+              <div class="title-pill">${video.title}</div>
+              <div class="source">
+                <span class="label">YouTube</span>
+                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
+              </div>
+            </div>
+          `;
+
+          card.addEventListener("click", () => openModal(video));
+          videoGrid.appendChild(card);
+        });
+      }
+
+      searchInput.addEventListener("input", (e) => {
+        renderVideos(e.target.value);
+      });
+
+      closeModal.addEventListener("click", closeVideoModal);
+
+      videoModal.addEventListener("click", (e) => {
+        if (e.target === videoModal) closeVideoModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && videoModal.classList.contains("open")) {
+          closeVideoModal();
+        }
+      });
+
+      renderVideos();
+    </script>
   </body>
 </html>
