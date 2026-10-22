@@ -11,14 +11,16 @@
 
     <style>
       :root{
-        --bg: #050b12;
-        --panel: #0b1118;
-        --panel-2: rgba(18, 24, 30, 0.9);
-        --border: rgba(255,255,255,0.18);
-        --text: #f3f3f3;
-        --muted: #d0d0d0;
-        --blue: #5a9cf7;
-        --blue-2: #3d86ff;
+        --bg: #04090d;
+        --bg-2: #0a1016;
+        --panel: #0a0f14;
+        --panel-2: rgba(19, 25, 31, 0.88);
+        --border: rgba(255,255,255,0.15);
+        --text: #edf3f6;
+        --muted: #c9d1d5;
+        --blue: #4f8fe8;
+        --blue-2: #3d7ed6;
+        --shadow: rgba(0,0,0,0.9);
       }
 
       * { box-sizing: border-box; }
@@ -28,19 +30,38 @@
         min-height: 100%;
         background: var(--bg);
         color: var(--text);
-        font-family: "Special Elite", monospace;
+        font-family: "Special Elite", "Courier New", monospace;
       }
 
       body {
         background:
-          linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 10%),
-          #050b12;
+          repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.015),
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px,
+            transparent 3px
+          ),
+          linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 18%),
+          #04090d;
       }
 
       .page {
         width: 100%;
         min-height: 100vh;
-        background: #060d13;
+        background: #050b10;
+        position: relative;
+      }
+
+      .page::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(255,255,255,0.025), transparent 28%),
+          radial-gradient(circle at 80% 10%, rgba(255,255,255,0.02), transparent 22%);
+        mix-blend-mode: screen;
       }
 
       .topbar {
@@ -49,28 +70,28 @@
         display: flex;
         align-items: center;
         padding: 0 18px 0 18px;
-        gap: 18px;
+        gap: 16px;
+        background: rgba(0,0,0,0.14);
       }
 
       .logo {
         flex: 0 0 auto;
         font-family: "Creepster", cursive;
-        font-size: clamp(2.2rem, 3.2vw, 4.2rem);
-        letter-spacing: 0.05em;
+        font-size: clamp(2.1rem, 3vw, 4.1rem);
+        letter-spacing: 0.06em;
         line-height: 1;
-        color: #f5f6f7;
+        color: #f6f7f8;
         text-shadow:
-          2px 2px 0 rgba(0,0,0,0.9),
-          4px 4px 0 rgba(255,255,255,0.12),
+          2px 2px 0 rgba(0,0,0,0.95),
+          4px 4px 0 rgba(255,255,255,0.08),
           0 0 16px rgba(255,255,255,0.08);
-        transform: scaleY(1.03);
+        transform: skewX(-3deg);
         white-space: nowrap;
-        margin-left: 6px;
+        margin-left: 4px;
       }
 
       .logo span {
         display: inline-block;
-        transform: skewX(-7deg);
       }
 
       .search-wrap {
@@ -78,17 +99,17 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: 14px;
+        gap: 12px;
         min-width: 0;
       }
 
       .searchbar {
         flex: 1;
-        height: 48px;
-        max-width: 920px;
-        border: 1px solid rgba(255,255,255,0.12);
+        height: 50px;
+        max-width: 940px;
+        border: 1px solid rgba(255,255,255,0.15);
         background: rgba(255,255,255,0.02);
-        border-radius: 6px;
+        border-radius: 3px;
         display: flex;
         align-items: center;
         padding: 0 16px;
@@ -100,27 +121,29 @@
         background: transparent;
         border: none;
         outline: none;
-        font-family: "Special Elite", monospace;
-        font-size: 1.5rem;
+        font-family: "VT323", monospace;
+        font-size: 2.1rem;
+        letter-spacing: 0.04em;
         color: rgba(255,255,255,0.82);
       }
 
       .searchbar input::placeholder {
-        color: rgba(255,255,255,0.55);
+        color: rgba(255,255,255,0.5);
       }
 
       .search-btn {
-        width: 112px;
-        height: 48px;
-        border: 1px solid rgba(255,255,255,0.16);
-        border-radius: 6px;
+        width: 114px;
+        height: 50px;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 3px;
         background: rgba(255,255,255,0.04);
         color: #f1f1f1;
-        font-size: 1rem;
-        font-family: "Special Elite", monospace;
+        font-size: 1.1rem;
+        font-family: "VT323", monospace;
+        letter-spacing: 0.04em;
         cursor: pointer;
         margin-left: 2px;
-        transition: background 0.15s ease;
+        transition: background 0.12s ease;
       }
 
       .search-btn:hover {
@@ -130,19 +153,19 @@
       .nav {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 18px;
         margin-left: auto;
         padding-right: 6px;
         white-space: nowrap;
       }
 
       .nav a {
-        font-family: "Special Elite", monospace;
-        font-size: 1.15rem;
+        font-family: "VT323", monospace;
+        font-size: 2rem;
         color: #4d98ff;
         text-decoration: none;
-        letter-spacing: 0.02em;
-        text-shadow: 0 0 4px rgba(105,160,255,0.22);
+        letter-spacing: 0.04em;
+        text-shadow: 0 0 4px rgba(105,160,255,0.15);
       }
 
       .content {
@@ -159,13 +182,15 @@
 
       .card {
         display: grid;
-        grid-template-columns: 280px 1fr;
-        min-height: 152px;
+        grid-template-columns: 290px 1fr;
+        min-height: 150px;
         background: rgba(17, 21, 26, 0.72);
         border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 10px;
+        border-radius: 0;
         overflow: hidden;
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+        box-shadow:
+          inset 0 0 0 1px rgba(255,255,255,0.02),
+          0 0 0 1px rgba(0,0,0,0.4);
         cursor: pointer;
         transition: transform 0.12s ease, border-color 0.12s ease;
       }
@@ -187,14 +212,16 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(to right, rgba(0,0,0,0.12), rgba(0,0,0,0.02));
+        background:
+          linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.02)),
+          linear-gradient(to top, rgba(0,0,0,0.12), transparent);
       }
 
       .meta {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 16px 18px 12px 18px;
+        padding: 14px 18px 12px 18px;
         min-width: 0;
       }
 
@@ -203,25 +230,29 @@
         width: fit-content;
         max-width: 100%;
         background: var(--blue);
-        color: #f2f8ff;
-        padding: 10px 18px 9px;
-        border-radius: 8px;
-        font-size: clamp(1.1rem, 1.5vw, 1.9rem);
-        line-height: 1.1;
+        color: #eef6ff;
+        padding: 11px 18px 9px;
+        border-radius: 3px;
+        font-family: "VT323", monospace;
+        font-size: clamp(1.9rem, 2.3vw, 2.8rem);
+        line-height: 0.95;
+        letter-spacing: 0.03em;
         box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
-        text-shadow: 0 0 10px rgba(255,255,255,0.06);
+        text-shadow: 0 0 10px rgba(255,255,255,0.05);
       }
 
       .source {
         margin-top: 14px;
         color: #f0f0f0;
-        font-size: clamp(1.05rem, 1.4vw, 1.4rem);
-        line-height: 1.4;
+        font-family: "VT323", monospace;
+        font-size: clamp(1.6rem, 1.7vw, 2.3rem);
+        line-height: 1.2;
+        letter-spacing: 0.02em;
       }
 
       .source .label {
         display: block;
-        color: rgba(255,255,255,0.9);
+        color: rgba(255,255,255,0.95);
       }
 
       .source .encounter {
@@ -251,7 +282,7 @@
         width: min(72vw, 860px);
         background: #0b1118;
         border: 1px solid rgba(255,255,255,0.14);
-        border-radius: 12px;
+        border-radius: 4px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         overflow: hidden;
       }
@@ -266,21 +297,23 @@
       }
 
       .modal-title {
-        font-size: 1.15rem;
+        font-family: "VT323", monospace;
+        font-size: 2rem;
         color: #f0f0f0;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        letter-spacing: 0.03em;
       }
 
       .close-btn {
         background: transparent;
         color: white;
         border: 1px solid rgba(255,255,255,0.15);
-        border-radius: 6px;
+        border-radius: 2px;
         width: 32px;
         height: 32px;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         cursor: pointer;
         line-height: 1;
       }
