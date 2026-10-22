@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metrajes 404</title>
-    <meta name="description" content="Minimal retro video site." />
+    <title>Metrajes 404 | Watch</title>
+    <meta name="description" content="Retro video watch page with comments and recommendations." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -31,83 +31,135 @@
         </div>
       </header>
 
-      <main class="main-panel">
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">Featured</p>
-            <h1>Simple culture. Slow internet.</h1>
-            <p>
-              A quiet look back to the early web, where everything felt handmade, personal, and a little nostalgic.
-            </p>
-            <button type="button" class="primary-btn">Watch</button>
+      <main class="watch-layout">
+        <section class="main-column">
+          <div class="player-shell">
+            <div class="player-frame" aria-label="Video player">
+              <div class="player-overlay">
+                <div class="video-controls">
+                  <span class="control">◀◀</span>
+                  <span class="control big">▶</span>
+                  <span class="control">⏸</span>
+                </div>
+                <div class="player-meta">
+                  <span>04:32</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="hero-screen" aria-hidden="true">
-            <div class="screen-frame">
-              <div class="screen-overlay">
-                <span class="play-pill">▶ Play</span>
-                <span class="screen-time">05:12</span>
+          <div class="video-info">
+            <h1>Classic internet, slow loading, and the best of old web culture</h1>
+            <div class="meta-row">
+              <span>184,923 views</span>
+              <span>•</span>
+              <span>1 day ago</span>
+            </div>
+
+            <div class="actions-row">
+              <button type="button" class="plain-btn">Like</button>
+              <button type="button" class="plain-btn">Dislike</button>
+              <button type="button" class="plain-btn">Share</button>
+              <button type="button" class="plain-btn">Save</button>
+            </div>
+          </div>
+
+          <div class="description-box">
+            <p><strong>Metrajes 404</strong> • A quiet nostalgia trip through old-school web pages, flash-era games, and digital rituals from the early internet.</p>
+            <p>This video is about the feeling of discovering a website and instantly knowing it was made by a person, not a giant company. Everything feels slower, simpler, and a little more personal.</p>
+          </div>
+
+          <div class="comments-box">
+            <div class="comments-header">
+              <h2>Comments</h2>
+              <span>312</span>
+            </div>
+
+            <div class="comment-item">
+              <div class="avatar">A</div>
+              <div class="comment-body">
+                <div class="comment-meta">
+                  <strong>Alex</strong>
+                  <span>2 hours ago</span>
+                </div>
+                <p>This feels exactly like the old web. The whole vibe is so calm and nostalgic.</p>
+              </div>
+            </div>
+
+            <div class="comment-item">
+              <div class="avatar">M</div>
+              <div class="comment-body">
+                <div class="comment-meta">
+                  <strong>Maria</strong>
+                  <span>3 hours ago</span>
+                </div>
+                <p>Looks so minimal and clean. It reminds me of those old forum pages and giant loading bars.</p>
+              </div>
+            </div>
+
+            <div class="comment-item">
+              <div class="avatar">J</div>
+              <div class="comment-body">
+                <div class="comment-meta">
+                  <strong>Jules</strong>
+                  <span>5 hours ago</span>
+                </div>
+                <p>I love how this still feels like a real website, not a giant app. Very nice.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="filters" aria-label="Video filters">
-          <button type="button" class="filter-pill active" data-filter="all">All</button>
-          <button type="button" class="filter-pill" data-filter="games">Games</button>
-          <button type="button" class="filter-pill" data-filter="music">Music</button>
-          <button type="button" class="filter-pill" data-filter="tech">Tech</button>
-        </section>
+        <aside class="sidebar-column">
+          <div class="sidebar-header">
+            <h3>Up next</h3>
+          </div>
 
-        <section class="video-grid" aria-live="polite">
-          <article class="video-card" data-category="games" data-title="Ancient arcade nights">
-            <div class="thumb thumb-one"><span>04:22</span></div>
-            <div class="card-copy">
-              <h3>Ancient Arcade Nights</h3>
-              <p>Pixel dreams and simple joy.</p>
+          <div class="recommendation-item">
+            <div class="mini-thumb thumb-one"></div>
+            <div class="mini-copy">
+              <h4>Quiet desktop rituals</h4>
+              <p>Late night browsing</p>
+              <span>72K views</span>
             </div>
-          </article>
+          </div>
 
-          <article class="video-card" data-category="music" data-title="Quiet synth memories">
-            <div class="thumb thumb-two"><span>03:58</span></div>
-            <div class="card-copy">
-              <h3>Quiet Synth Memories</h3>
-              <p>Soft loops and warm nights.</p>
+          <div class="recommendation-item">
+            <div class="mini-thumb thumb-two"></div>
+            <div class="mini-copy">
+              <h4>Old flash games</h4>
+              <p>Pixel moments</p>
+              <span>91K views</span>
             </div>
-          </article>
+          </div>
 
-          <article class="video-card" data-category="tech" data-title="The early web explained">
-            <div class="thumb thumb-three"><span>07:11</span></div>
-            <div class="card-copy">
-              <h3>The Early Web Explained</h3>
-              <p>Static pages, dial-up, and wonder.</p>
+          <div class="recommendation-item">
+            <div class="mini-thumb thumb-three"></div>
+            <div class="mini-copy">
+              <h4>2005 music archive</h4>
+              <p>Retro mixtapes</p>
+              <span>58K views</span>
             </div>
-          </article>
+          </div>
 
-          <article class="video-card" data-category="games" data-title="Simple controller chaos">
-            <div class="thumb thumb-four"><span>06:05</span></div>
-            <div class="card-copy">
-              <h3>Simple Controller Chaos</h3>
-              <p>Low-fi fun with old hardware.</p>
+          <div class="recommendation-item">
+            <div class="mini-thumb thumb-four"></div>
+            <div class="mini-copy">
+              <h4>Web design basics</h4>
+              <p>Minimal layouts</p>
+              <span>123K views</span>
             </div>
-          </article>
+          </div>
 
-          <article class="video-card" data-category="music" data-title="Garage mix from 2005">
-            <div class="thumb thumb-five"><span>05:24</span></div>
-            <div class="card-copy">
-              <h3>Garage Mix from 2005</h3>
-              <p>Slow beats and dusty memories.</p>
+          <div class="recommendation-item">
+            <div class="mini-thumb thumb-five"></div>
+            <div class="mini-copy">
+              <h4>Slow internet stories</h4>
+              <p>Nostalgic moments</p>
+              <span>64K views</span>
             </div>
-          </article>
-
-          <article class="video-card" data-category="tech" data-title="Desktop culture archive">
-            <div class="thumb thumb-six"><span>08:40</span></div>
-            <div class="card-copy">
-              <h3>Desktop Culture Archive</h3>
-              <p>Folders, widgets, and tiny rituals.</p>
-            </div>
-          </article>
-        </section>
+          </div>
+        </aside>
       </main>
     </div>
 

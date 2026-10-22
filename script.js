@@ -1,26 +1,14 @@
-const filterButtons = document.querySelectorAll('.filter-pill');
-const cards = document.querySelectorAll('.video-card');
 const searchInput = document.getElementById('video-search');
 
-const applyFilters = () => {
-  const activeFilter = document.querySelector('.filter-pill.active')?.dataset.filter || 'all';
-  const query = searchInput.value.trim().toLowerCase();
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    const value = searchInput.value.trim().toLowerCase();
+    const cards = document.querySelectorAll('.recommendation-item');
 
-  cards.forEach((card) => {
-    const category = card.dataset.category;
-    const title = card.dataset.title.toLowerCase();
-    const matchesCategory = activeFilter === 'all' || category === activeFilter;
-    const matchesSearch = !query || title.includes(query);
-
-    card.classList.toggle('hidden', !(matchesCategory && matchesSearch));
+    cards.forEach((card) => {
+      const text = card.textContent.toLowerCase();
+      const show = !value || text.includes(value);
+      card.style.display = show ? 'grid' : 'none';
+    });
   });
-};
-
-filterButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
-    applyFilters();
-  });
-});
-
-searchInput.addEventListener('input', applyFilters);
+}
