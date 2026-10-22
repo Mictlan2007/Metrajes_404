@@ -6,12 +6,12 @@
     <title>Metrajes 404</title>
     <meta
       name="description"
-      content="Retro-style horror video archive inspired by classic early internet culture."
+      content="Retro horror video archive inspired by old internet upload culture."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Orbitron:wght@500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -19,103 +19,118 @@
   <body>
     <div class="page-shell">
       <header class="topbar">
-        <div class="brand" aria-label="Metrajes 404 home">
-          <div class="brand-mark">M</div>
-          <div class="brand-copy">
-            <span class="brand-subtitle">Metrajes</span>
-            <strong>404</strong>
-          </div>
+        <div class="brand">
+          <span class="brand-text">METRAJES_404</span>
         </div>
 
-        <nav class="topnav" aria-label="Main navigation">
-          <a href="#" class="active">Home</a>
-          <a href="#">Trending</a>
-          <a href="#">Uploads</a>
-          <a href="#">Archive</a>
-        </nav>
+        <div class="search-wrap">
+          <input type="text" placeholder="Search" aria-label="Search" />
+        </div>
 
-        <div class="header-actions">
-          <button class="ghost-button">Browse</button>
-          <button class="primary-button">Upload</button>
+        <div class="top-actions">
+          <button class="search-button">Search</button>
+          <a href="#">Upload</a>
+          <a href="#">Sign in</a>
         </div>
       </header>
 
-      <div class="content-wrap">
-        <aside class="sidebar" aria-label="Sidebar navigation">
-          <div class="sidebar-section">
-            <h3>Explore</h3>
-            <ul>
-              <li class="active">For You</li>
-              <li>Following</li>
-              <li>Library</li>
-              <li>History</li>
-            </ul>
-          </div>
+      <main class="video-list">
+        <article class="video-card">
+          <div
+            class="thumb thumb-one"
+            aria-label="La caída de Edgar thumbnail"
+          ></div>
 
-          <div class="sidebar-section">
-            <h3>Channels</h3>
-            <ul>
-              <li>Night Signals</li>
-              <li>Static Archive</li>
-              <li>Old Broadcast</li>
-              <li>Open Channel</li>
-            </ul>
-          </div>
-
-          <div class="sidebar-card">
-            <div class="card-badge">Nocturne Archive</div>
-            <p>
-              Recovered footage, cursed recordings, and the strange things people
-              forgot to delete.
-            </p>
-          </div>
-        </aside>
-
-        <main class="main-panel">
-          <section class="featured">
-            <div class="featured-copy">
-              <p class="eyebrow">Recovered transmission</p>
-              <h1>Midnight Transmission 7</h1>
-              <p class="lead">
-                Recovered from an abandoned upload archive. This was never meant to be seen.
-                The channel vanished in 1998, but the signal never stopped.
-              </p>
-
-              <div class="meta-row">
-                <span>Recovered footage</span>
-                <span>•</span>
-                <span>Channel: Night Signals</span>
-                <span>•</span>
-                <span>Archive ID: 404-7</span>
-              </div>
-
-              <div class="cta-row">
-                <button class="primary-button">Watch now</button>
-                <button class="ghost-button">Save</button>
-              </div>
+          <div class="video-info">
+            <div class="title-pill">La Caída de Edgar</div>
+            <div class="meta-label">YouTube</div>
+            <div class="meta-sub">
+              Encontrado por:
+              <span>DonNadie404</span>
             </div>
+          </div>
+        </article>
 
-            <div class="featured-video" aria-label="Featured video preview">
-              <div class="video-surface">
-                <div class="play-button" aria-hidden="true"></div>
-                <div class="video-overlay">
-                  <span class="overlay-badge">LIVE</span>
-                  <span class="duration">14:22</span>
-                </div>
-              </div>
+        <article class="video-card">
+          <div
+            class="thumb thumb-two"
+            aria-label="muñeca mueve cabeza thumbnail"
+          ></div>
+
+          <div class="video-info">
+            <div class="title-pill">muñeca mueve cabeza</div>
+            <div class="meta-label">YouTube</div>
+            <div class="meta-sub">
+              Encontrado por:
+              <span>DonNadie404</span>
             </div>
-          </section>
+          </div>
+        </article>
 
-          <section class="filter-row" aria-label="Video filters">
-            <button class="filter active">All uploads</button>
-            <button class="filter">Most watched</button>
-            <button class="filter">New this week</button>
-            <button class="filter">Creepypasta</button>
-          </section>
+        <article class="video-card">
+          <div
+            class="thumb thumb-three"
+            aria-label="Username 666 thumbnail"
+          ></div>
 
-          <section class="video-grid" id="videoGrid" aria-live="polite"></section>
-        </main>
-      </div>
+          <div class="video-info">
+            <div class="title-pill">Username:666</div>
+            <div class="meta-label">YouTube</div>
+            <div class="meta-sub">
+              Encontrado por:
+              <span>DonNadie404</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div
+            class="thumb thumb-four"
+            aria-label="1980s PSA thumbnail"
+          ></div>
+
+          <div class="video-info">
+            <div class="title-pill">1980s PSA - "We're Not Candy!"</div>
+            <div class="meta-label">YouTube</div>
+            <div class="meta-sub">
+              Encontrado por:
+              <span>DonNadie404</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div
+            class="thumb thumb-five"
+            aria-label="Don't Hug Me I'm Scared thumbnail"
+          ></div>
+
+          <div class="video-info">
+            <div class="title-pill">Don't Hug Me I'm Scared</div>
+            <div class="meta-label">YouTube</div>
+            <div class="meta-sub">
+              Encontrado por:
+              <span>DonNadie404</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div
+            class="thumb thumb-six"
+            aria-label="Mereana Mordegard Glesgorv thumbnail"
+          ></div>
+
+          <div class="video-info">
+            <div class="title-pill">Mereana Mordegard Glesgorv</div>
+            <div class="meta-label">YouTube</div>
+            <div class="meta-sub">
+              Encontrado por:
+              <span>DonNadie404</span>
+            </div>
+          </div>
+        </article>
+      </main>
     </div>
 
     <script src="script.js"></script>
