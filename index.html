@@ -1,395 +1,344 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Classic Tube</title>
+    <title>METRAJES_404</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
+
     <style>
-      :root {
-        --bg: #f1f1f1;
-        --panel: #ffffff;
-        --ink: #111111;
-        --muted: #606060;
-        --border: #d9d9d9;
-        --youtube-red: #ff0000;
+      :root{
+        --bg: #050b12;
+        --panel: #0b1118;
+        --panel-2: rgba(18, 24, 30, 0.9);
+        --border: rgba(255,255,255,0.18);
+        --text: #f3f3f3;
+        --muted: #d0d0d0;
+        --blue: #5a9cf7;
+        --blue-2: #3d86ff;
+        --shadow: rgba(0,0,0,0.86);
+        --search-bg: rgba(255,255,255,0.02);
       }
 
       * { box-sizing: border-box; }
 
-      body {
+      html, body {
         margin: 0;
+        min-height: 100%;
         background: var(--bg);
-        color: var(--ink);
-        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        font-family: "Special Elite", monospace;
       }
 
-      .topbar {
-        height: 56px;
-        background: #fff;
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        padding: 0 18px;
-        gap: 18px;
-      }
-
-      .menu-icon {
-        width: 18px;
-        height: 14px;
-        position: relative;
-      }
-
-      .menu-icon span {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: #333;
-        border-radius: 2px;
-      }
-
-      .menu-icon span:nth-child(1) { top: 0; }
-      .menu-icon span:nth-child(2) { top: 6px; }
-      .menu-icon span:nth-child(3) { top: 12px; }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 700;
-        font-size: 1.1rem;
-      }
-
-      .brand-mark {
-        width: 28px;
-        height: 20px;
-        background: var(--youtube-red);
-        border-radius: 6px;
-        position: relative;
-      }
-
-      .brand-mark::before {
-        content: "";
-        position: absolute;
-        left: 11px;
-        top: 6px;
-        width: 0;
-        height: 0;
-        border-left: 8px solid white;
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
+      body {
+        background:
+          linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 10%),
+          #050b12;
       }
 
       .page {
-        max-width: 1180px;
-        margin: 18px auto;
-        padding: 0 16px;
+        width: 100%;
+        min-height: 100vh;
+        background: #060d13;
       }
 
-      .layout {
-        display: grid;
-        grid-template-columns: minmax(0, 2.3fr) minmax(260px, 0.9fr);
+      .topbar {
+        height: 96px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 18px 0 22px;
         gap: 20px;
       }
 
-      .video-panel {
-        background: #fff;
-        border: 1px solid var(--border);
-        padding: 10px;
+      .logo {
+        flex: 0 0 auto;
+        font-family: "Creepster", cursive;
+        font-size: clamp(2.5rem, 4vw, 5rem);
+        letter-spacing: 0.08em;
+        line-height: 1;
+        color: #f6f7f8;
+        text-shadow:
+          2px 2px 0 #000,
+          4px 4px 0 rgba(255,255,255,0.22),
+          0 0 18px rgba(255,255,255,0.12);
+        transform: scaleY(1.02);
+        white-space: nowrap;
       }
 
-      .video-shell {
-        position: relative;
-        background: #000;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        overflow: hidden;
+      .logo .num {
+        font-family: "Creepster", cursive;
+        display: inline-block;
+        transform: skewX(-7deg);
       }
 
-      .video-shell iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        display: block;
-        background: #000;
+      .search-wrap {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
       }
 
-      .title-box {
-        background: #fff;
-        border-top: 1px solid var(--border);
-        padding: 14px 8px 0;
+      .searchbar {
+        flex: 1;
+        max-width: 980px;
+        height: 56px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.02);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        padding: 0 18px;
+        margin-left: 8px;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
       }
 
-      .video-title {
-        margin: 0;
-        font-size: clamp(1.1rem, 2vw, 1.5rem);
-        line-height: 1.3;
+      .searchbar input {
+        background: transparent;
+        border: none;
+        outline: none;
+        flex: 1;
+        font-family: "Special Elite", monospace;
+        font-size: 2rem;
+        color: rgba(255,255,255,0.82);
       }
 
-      .meta {
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 0.9rem;
+      .searchbar input::placeholder {
+        color: rgba(255,255,255,0.46);
       }
 
-      .sidebar {
-        background: #fff;
-        border: 1px solid var(--border);
-        padding: 8px;
+      .search-btn {
+        width: 124px;
+        height: 56px;
+        border: 1px solid rgba(255,255,255,0.16);
+        border-radius: 6px;
+        background: rgba(255,255,255,0.04);
+        color: #f1f1f1;
+        font-size: 1.08rem;
+        font-family: "Special Elite", monospace;
+        cursor: pointer;
+        margin-left: 14px;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+        transition: 0.15s ease;
       }
 
-      .sidebar-title {
-        margin: 8px 8px 12px;
-        font-size: 1rem;
-        font-weight: 700;
+      .search-btn:hover {
+        background: rgba(255,255,255,0.08);
       }
 
-      .video-list {
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-left: auto;
+        padding-right: 8px;
+      }
+
+      .nav a {
+        font-family: "Special Elite", monospace;
+        font-size: 1.05rem;
+        color: #4d98ff;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        text-shadow: 0 0 4px rgba(105,160,255,0.22);
+      }
+
+      .nav .upload {
+        margin-left: 8px;
+      }
+
+      .content {
+        padding: 24px 16px 26px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 22px;
       }
 
-      .video-item {
+      .video-grid {
         display: grid;
-        grid-template-columns: 168px 1fr;
-        gap: 10px;
-        padding: 6px;
-        border: 1px solid transparent;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background 0.15s ease, border-color 0.15s ease;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px 28px;
+        width: min(100%, 1780px);
+        margin: 0 auto;
       }
 
-      .video-item:hover,
-      .video-item.active {
-        background: #f8f8f8;
-        border-color: var(--border);
+      .card {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        min-height: 190px;
+        background: rgba(17, 21, 26, 0.72);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
       }
 
       .thumb {
         position: relative;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        border-radius: 6px;
-        overflow: hidden;
+        min-height: 100%;
         background-size: cover;
         background-position: center;
+        border-right: 1px solid rgba(255,255,255,0.08);
       }
 
-      .thumb::after {
-        content: "▶";
+      .thumb::before {
+        content: "";
         position: absolute;
-        right: 8px;
-        bottom: 8px;
-        color: white;
-        background: rgba(0,0,0,0.55);
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        font-size: 0.75rem;
+        inset: 0;
+        background: linear-gradient(to right, rgba(0,0,0,0.12), rgba(0,0,0,0.0));
       }
 
-      .video-copy {
+      .meta {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding: 18px 18px 18px 18px;
         min-width: 0;
       }
 
-      .video-copy h4 {
-        margin: 0 0 6px;
-        font-size: 0.96rem;
-        line-height: 1.25;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+      .title-pill {
+        display: inline-block;
+        width: fit-content;
+        max-width: 100%;
+        background: var(--blue);
+        color: #f2f8ff;
+        padding: 10px 18px 9px;
+        border-radius: 8px;
+        font-size: clamp(1.15rem, 1.7vw, 2.1rem);
+        line-height: 1.1;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+        text-shadow: 0 0 10px rgba(255,255,255,0.06);
       }
 
-      .video-copy span {
-        color: var(--muted);
-        font-size: 0.8rem;
+      .source {
+        margin-top: 18px;
+        color: #f0f0f0;
+        font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+        line-height: 1.5;
       }
 
-      @media (max-width: 900px) {
-        .layout {
+      .source .label {
+        display: block;
+        color: rgba(255,255,255,0.9);
+      }
+
+      .source .encounter {
+        display: block;
+        color: rgba(255,255,255,0.82);
+      }
+
+      .source strong {
+        font-weight: normal;
+      }
+
+      .muted {
+        color: rgba(255,255,255,0.9);
+      }
+
+      @media (max-width: 1100px) {
+        .video-grid {
           grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .topbar {
+          flex-wrap: wrap;
+          height: auto;
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        .logo {
+          width: 100%;
+        }
+
+        .search-wrap {
+          width: 100%;
+          margin-top: 8px;
+        }
+
+        .nav {
+          width: 100%;
+          justify-content: flex-end;
+          margin-left: 0;
+        }
+
+        .card {
+          grid-template-columns: 220px 1fr;
         }
       }
     </style>
   </head>
   <body>
-    <header class="topbar">
-      <div class="menu-icon" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div class="page">
+      <header class="topbar">
+        <div class="logo"><span class="num">METRAJES_404</span></div>
 
-      <div class="brand" aria-label="Classic Tube">
-        <span class="brand-mark"></span>
-        <span>Classic Tube</span>
-      </div>
-    </header>
-
-    <main class="page">
-      <div class="layout">
-        <section class="video-panel">
-          <div class="video-shell">
-            <iframe
-              id="videoFrame"
-              src=""
-              title="Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+        <div class="search-wrap">
+          <div class="searchbar">
+            <input type="text" placeholder="Search" aria-label="Search" />
           </div>
+          <button class="search-btn">Search</button>
+        </div>
 
-          <div class="title-box">
-            <h1 id="currentTitle" class="video-title">Loading...</h1>
-            <div id="metaLabel" class="meta">0 videos • playlist</div>
-          </div>
-        </section>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#" class="upload">Upload</a>
+          <a href="#">Sign in</a>
+        </nav>
+      </header>
 
-        <aside class="sidebar">
-          <div class="sidebar-title">Up next</div>
-          <div id="videoList" class="video-list"></div>
-        </aside>
-      </div>
-    </main>
-
-    <script>
-      const videos = [
-        { title: "Tengo Miedo!", url: "https://youtu.be/p7zevPed3Ss?si=FB4jr-6bAI_FypnM" },
-        { title: "Keyboard Cat! - EL ORIGINAL!", url: "https://youtu.be/J---aiyznGQ?si=7wKKtr93bBLFnoHg" },
-        { title: "Mirada Dramática", url: "https://youtu.be/y8Kyi0WNg40?si=16-cXDdtcttkvp7f" },
-        { title: "Aparición de un Duende", url: "https://youtu.be/xPghfRHZUFs?si=Lh0jyra4t4DHI80n" },
-        { title: "Body Of A Pig", url: "https://youtu.be/X72xDpv898Y?si=URfompjMCPqXnNYF" },
-        { title: "“Dining Room” o “There is Nothing”", url: "https://youtu.be/ns1SGo3WCF4?si=gpxBpzMSae3ORL7O" },
-        { title: "Experimentos sobre la Reanimación de Organismos", url: "https://youtu.be/KDqh-r8TQgs?si=yjgnS6cUqokESQQQ" },
-        { title: "Hombre se pierde en las Catacumbas de París Parte 1 de 2", url: "https://youtu.be/yxJkMlqYrys?si=fiHjDgGhfFq4tdDF" },
-        { title: "Max Headroom 1987 Incidente de Intrusión en la Señal de Transmisión", url: "https://youtu.be/oqgeM6rWSkw?si=RyZWanv83laKocdu" },
-        { title: "Hombre se pierde en las Catacumbas de París Parte 2 de 2", url: "https://youtu.be/Hi5iKa3DFnM?si=Wf6AZzm9KwX_uPFg" },
-        { title: "EXN OFICIAL: LA PASCUALITA DE CHIHUAHUA", url: "https://youtu.be/cUG6MSkIfFY?si=Elgz-DybWD6LPanA" },
-
-        { title: "Fantasma gritando en hotel embrujado - VERSIÓN COMPLETA", url: "https://youtu.be/BobA5ujHkvU?si=QSmSW3y77KCqtEtY" },
-        { title: "DEMONIOS REALES CAPTADOS EN CÁMARA", url: "https://youtu.be/oEVfREVGcaY?si=QlM-2LIgXBmG-Kgf" },
-        { title: "LUISON EN PARAGUAY", url: "https://youtu.be/L66UNoHyuag?si=uEzpX7TG3-2kDsj6" },
-        { title: "My Ghoul Jackson", url: "https://youtu.be/C8pOvjf6G-o?si=mB0o4prXHymM0zL6" },
-        { title: "Who's Hungry?", url: "https://youtu.be/8srEvrF90-s?si=T2kr8-pGzKltPK5V" },
-        { title: "Comercial Japones", url: "https://youtu.be/oFvtqlny43M?si=1l2EfxhuxhhoaWxD" },
-        { title: "Celulares Bailando", url: "https://youtu.be/fOq6Ydi9JEg?si=LYKbb1PnuwbovZRr" },
-
-        { title: "Baile de marge", url: "https://youtu.be/0r0gvDBKcfg?si=EAK-zshrv6vFzpEa" },
-        { title: "tumbas por aquí, tumbas por allá", url: "https://youtu.be/taIuoci1t00?si=utRMqpTt2V7HbK40" },
-        { title: "Criatura extraña de túnel", url: "https://youtu.be/-Cve-in80sk?si=fvmshU_bvpsAUg9b" },
-        { title: "Fantasma de Guerra Cívil", url: "https://youtu.be/LjcnXrDBmMM?si=5z04ovSgxWU41aqf" },
-        { title: "Terror en el cementerio (escenas impactantes )", url: "https://youtu.be/BU6wkoU9V5o?si=-CNwdhPi3U1nte9A" },
-        { title: "Fantasma captado por cámara de seguridad", url: "https://youtu.be/cy9OcV3MAKM?si=GSCi5WYxtN41GGpk" },
-        { title: "who wants to gnaw on human bones", url: "https://youtu.be/jdRCNM2k42o?si=5sPrNwr7IwOFzUfT" },
-        { title: "Don't Hug me I'm Scared", url: "https://youtu.be/9C_HReR_McQ?si=bnSH144dEp_3E3o8" },
-        { title: "Salad Fingers 1", url: "https://youtu.be/M3iOROuTuMA?si=Bzy3GKVQTkQdKUN2" },
-        { title: "Un Día en el Infierno/A Day in Hell (2003)", url: "https://youtu.be/YtXFudBlCCc?si=T4zqsMZAZdUzEB7l" },
-        { title: "Globo Inquietante de Bob Esponja", url: "https://youtu.be/h4As3nxIepU?si=5Y5xb4-7uZ6xrFjs" },
-        { title: "Bob esponja cae", url: "https://youtu.be/nZVf7Ic5mLw?si=ZBK88R3ZiYy5Cum6" },
-        { title: "Little Baby's Ice Cream “Este es un Momento Especial”", url: "https://youtu.be/erh2ngRZxs0?si=lZhxD57ZNjlyni7E" },
-        { title: "Five Nights At Freddy's", url: "https://youtu.be/RP4UTOek0-Y?si=QGcaGdCLGefguJSa" },
-        { title: "Five Nights At Freddy's 2 Trailer", url: "https://youtu.be/lVPONdZBh6s?si=71qEmXIJPnPTn-Te" },
-        { title: "Five Nights At Freddy's 3 Teaser Trailer", url: "https://youtu.be/hdHlIy0W4uU?si=J5x5jfsIj3T4liCe" },
-        { title: "Five Nights At Freddy's 4 Trailer", url: "https://youtu.be/A-taWymx1WI?si=B7jQ-3Z8v0vdB26x" },
-        { title: "Sister Location Trailer 1", url: "https://youtu.be/Uw4-bZkxyKQ?si=Zthf-0JLmJ1kqjeZ" },
-        { title: "Five Nights At Freddy's gameplay", url: "https://youtu.be/GS-VcKmK7Gc?si=WDh-hXd4KTXsIOwq" },
-        { title: "OTREVDAMINA", url: "https://youtu.be/3wRaQOiAyOM?si=xXG1fTGpIaS1X1pK" },
-        { title: "SCP 096", url: "https://youtu.be/WcmE8IGh1kg?si=FlXhzUmCX-Lbve_x" },
-        { title: "ROMANCE DE LA LUNA LUNA Carmen París", url: "https://youtu.be/Z4eLNavYOIg?si=9f2uGIyovBBaytP0" },
-        { title: "tutoiral", url: "https://youtu.be/wvHa2y-pKD8?si=1AOKe1HKa0UBOYXQ" },
-        { title: "gato se da cuenta de que lo graban", url: "https://youtu.be/CIL-Y7R-B7M?si=fSy-89sH_sERhj8w" },
-        { title: "CreepyPasta: Greatest Show UnEarthed", url: "https://youtu.be/fTU96mlaPq4?si=XJDJAjwmOvyj75n9" },
-        { title: "Actividad Paranormal en el colegio", url: "https://youtu.be/qAYChc2tXmk?si=XhRVLUwtMcQr7JRI" },
-        { title: "Slimyswampghost cryptids (criptidos)", url: "https://youtu.be/bHQFazMeeVM?si=7hz2YeMWSQdGRMx-" },
-        { title: "Avistamiento de Long Horse", url: "https://youtu.be/93egnzerE3s?si=uPe0Bfr0FSdDTZdT" },
-        { title: "lugares extrañamente familiares con música inquietante", url: "https://youtu.be/VqZEfqoTA7M?si=Mf5CY4D9DUqDpsLD" },
-        { title: "Imágenes Inquietantes con Música Inquietante (Unnerving Images with Unnerving music)", url: "https://youtu.be/eYbvNYmDH2E?si=OpTd0fy9-P-F6p2y" },
-        { title: "“El Charro Negro” Leyenda Captada en Cámara", url: "https://youtu.be/zaG-iZuTm5U?si=ASyZ9Qc0Y88rFRIF" },
-        { title: "LOSTLOCKED…", url: "https://youtu.be/yLov8IZBkfg?si=HMBHxOAjBDU0bgVn" },
-        { title: "Canal 5 Al Servicio de la Comunidad", url: "https://youtu.be/E7dh3LgnVPs?si=xeQhwIUqB4iC1phQ" },
-        { title: "Canal 5 Al Servicio de la Comunidad 2001", url: "https://youtu.be/FyvZ87HPFrk?si=Zuk5oagGCWXfH3NC" },
-        { title: "CORNERFOLK | The Monument Mythos", url: "https://youtu.be/SzSMHFFRi8I?si=bt-DcDHbSFoSH2V_" },
-        { title: "Petscop 15", url: "https://youtu.be/PiH04RGXYKo?si=xQ1rlgR_2kYA4JIp" },
-        { title: "Policía de Arabia Saudita se encuentran a una Bruja Real", url: "https://youtu.be/Hfp-tcfMOdU?si=BOqkmB7cXXNHO6Qf" },
-        { title: "la mona bruja en Nicaragua", url: "https://youtu.be/ui1A31-xc44?si=RBesl3x889H647hF" },
-        { title: "El Silbón en Colombia", url: "https://youtu.be/a4N40cQeWBc?si=gdCg_NkjsZCDXyWn" }
-      ];
-
-      function getVideoIdFromUrl(url) {
-        try {
-          const parsed = new URL(url);
-
-          if (parsed.hostname.includes("youtu.be")) {
-            return parsed.pathname.replace("/", "");
-          }
-
-          if (parsed.hostname.includes("youtube.com")) {
-            const v = parsed.searchParams.get("v");
-            if (v) return v;
-          }
-
-          return "";
-        } catch (e) {
-          return "";
-        }
-      }
-
-      function getEmbedUrl(url) {
-        const videoId = getVideoIdFromUrl(url);
-        return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-      }
-
-      const videoList = document.getElementById("videoList");
-      const currentTitle = document.getElementById("currentTitle");
-      const videoFrame = document.getElementById("videoFrame");
-      const metaLabel = document.getElementById("metaLabel");
-
-      function renderPlaylist() {
-        videos.forEach((video, index) => {
-          const item = document.createElement("div");
-          item.className = "video-item" + (index === 0 ? " active" : "");
-
-          const videoId = getVideoIdFromUrl(video.url);
-
-          item.innerHTML = `
-            <div class="thumb" style="background-image:url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg')"></div>
-            <div class="video-copy">
-              <h4>${video.title}</h4>
-              <span>Video</span>
+      <main class="content">
+        <section class="video-grid">
+          <article class="card">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="meta">
+              <div class="title-pill">La Caída de Edgar</div>
+              <div class="source">
+                <span class="label">YouTube</span>
+                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
+              </div>
             </div>
-          `;
+          </article>
 
-          item.addEventListener("click", () => {
-            document.querySelectorAll(".video-item").forEach(el => el.classList.remove("active"));
-            item.classList.add("active");
-            currentTitle.textContent = video.title;
-            videoFrame.src = getEmbedUrl(video.url);
-          });
+          <article class="card">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="meta">
+              <div class="title-pill">muñeca mueve cabeza</div>
+              <div class="source">
+                <span class="label">YouTube</span>
+                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
+              </div>
+            </div>
+          </article>
 
-          videoList.appendChild(item);
-        });
+          <article class="card">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="meta">
+              <div class="title-pill">Username:666</div>
+              <div class="source">
+                <span class="label">YouTube</span>
+                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
+              </div>
+            </div>
+          </article>
 
-        metaLabel.textContent = `${videos.length} videos • playlist`;
-      }
-
-      function initFirstVideo() {
-        const first = videos[0];
-        currentTitle.textContent = first.title;
-        videoFrame.src = getEmbedUrl(first.url);
-      }
-
-      renderPlaylist();
-      initFirstVideo();
-    </script>
+          <article class="card">
+            <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="meta">
+              <div class="title-pill">1980s PSA - "We're Not Candy!"</div>
+              <div class="source">
+                <span class="label">YouTube</span>
+                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
   </body>
-  </html>
+</html>
