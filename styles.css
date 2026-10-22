@@ -26,25 +26,24 @@ html, body {
 }
 
 body {
-  background:
-    linear-gradient(180deg, rgba(12, 16, 20, 0.96), rgba(8, 12, 17, 1));
+  background: linear-gradient(180deg, rgba(12, 16, 20, 0.96), rgba(8, 12, 17, 1));
 }
 
 .page-shell {
   width: 100%;
   min-height: 100vh;
-  padding: 18px 24px 28px;
+  padding: 16px 22px 24px;
   background: #090d12;
   overflow: hidden;
 }
 
 .topbar {
   display: grid;
-  grid-template-columns: 1.1fr 2fr 1fr;
+  grid-template-columns: 1.15fr 2fr 1fr;
   align-items: center;
   gap: 18px;
-  min-height: 82px;
-  padding: 4px 0 14px;
+  min-height: 80px;
+  padding: 2px 0 12px;
   border-bottom: 1px solid rgba(255,255,255,0.14);
 }
 
@@ -255,4 +254,4 @@ body {
   .top-actions {
     justify-content: flex-start;
   }
-}
+  }
