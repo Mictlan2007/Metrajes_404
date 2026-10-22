@@ -1,1 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classic Tube</title>
+    <style>
+      :root {
+        --bg: #f1f1f1;
+        --panel: #ffffff;
+        --ink: #111111;
+        --muted: #606060;
+        --border: #d9d9d9;
+        --youtube-red: #ff0000;
+        --bar: #e5e5e5;
+        --pill: #f2f2f2;
+      }
 
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .topbar {
+        height: 56px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        padding: 0 18px;
+        gap: 18px;
+      }
+
+      .menu-icon {
+        width: 18px;
+        height: 14px;
+        position: relative;
+      }
+      .menu-icon span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #333;
+        border-radius: 2px;
+      }
+      .menu-icon span:nth-child(1) { top: 0; }
+      .menu-icon span:nth-child(2) { top: 6px; }
+      .menu-icon span:nth-child(3) { top: 12px; }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+
+      .brand-mark {
+        width: 28px;
+        height: 20px;
+        background: var(--youtube-red);
+        border-radius: 6px;
+        position: relative;
+      }
+      .brand-mark::before {
+        content: "";
+        position: absolute;
+        left: 11px;
+        top: 6px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid white;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+      }
+
+      .page {
+        max-width: 1180px;
+        margin: 18px auto;
+        padding: 0 16px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 2.3fr) minmax(250px, 0.9fr);
+        gap: 20px;
+      }
+
+      .video-panel {
+        background: #fff;
+        border: 1px solid var(--border);
+        padding: 10px;
+      }
+
+      .video-shell {
+        position: relative;
+        background: #000;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: #000;
+        object-fit: cover;
+      }
+
+      .player-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05));
+      }
+
+      .controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 10px 14px 12px;
+        display: grid;
+        gap: 10px;
+        pointer-events: auto;
+      }
+
+      .progress-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .progress {
+        flex: 1;
+        position: relative;
+        height: 4px;
+        background: rgba(255,255,255,0.35);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 0%;
+        background: var(--youtube-red);
+      }
+
+      .time {
+        color: white;
+        font-size: 12px;
+        min-width: 54px;
+        text-align: right;
+      }
+
+      .button-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .left-controls, .right-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .control-btn {
+        appearance: none;
+        border: 0;
+        background: rgba(255,255,255,0.12);
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        color: white;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .control-btn:hover {
+        background: rgba(255,255,255,0.2);
+      }
+
+      .title-box {
+        background: #fff;
+        border-top: 1px solid var(--border);
+        padding: 14px 8px 0;
+      }
+
+      .video-title {
+        margin: 0;
+        font-size: clamp(1.1rem, 2vw, 1.5rem);
+        line-height: 1.3;
+      }
+
+      .meta {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .sidebar {
+        background: #fff;
+        border: 1px solid var(--border);
+        padding: 8px;
+      }
+
+      .sidebar-title {
+        margin: 8px 8px 12px;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .video-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .video-item {
+        display: grid;
+        grid-template-columns: 168px 1fr;
+        gap: 10px;
+        padding: 6px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+
+      .video-item:hover,
+      .video-item.active {
+        background: #f8f8f8;
+        border-color: var(--border);
+      }
+
+      .thumb {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 6px;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .thumb::after {
+        content: "▶";
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        color: white;
+        background: rgba(0,0,0,0.5);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 0.75rem;
+      }
+
+      .video-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+      }
+
+      .video-copy h4 {
+        margin: 0 0 6px;
+        font-size: 0.96rem;
+        line-height: 1.25;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .video-copy span {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="menu-icon" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="brand" aria-label="Classic Tube">
+        <span class="brand-mark"></span>
+        <span>Classic Tube</span>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="layout">
+        <section class="video-panel">
+          <div class="video-shell">
+            <video id="video" playsinline preload="metadata" muted>
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            </video>
+
+            <div class="player-overlay"></div>
+
+            <div class="controls">
+              <div class="progress-wrap">
+                <div class="progress" aria-label="Video progress">
+                  <div id="progressBar" class="progress-bar"></div>
+                </div>
+                <div id="timeLabel" class="time">0:00 / 0:00</div>
+              </div>
+
+              <div class="button-row">
+                <div class="left-controls">
+                  <button id="playPause" class="control-btn" aria-label="Play or pause">❚❚</button>
+                  <button id="mute" class="control-btn" aria-label="Mute">🔊</button>
+                </div>
+
+                <div class="right-controls">
+                  <button class="control-btn" aria-label="Volume">⤢</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="title-box">
+            <h1 id="currentTitle" class="video-title">A slow motion mountain river</h1>
+            <div class="meta">4,120 views • 3 days ago</div>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <div class="sidebar-title">Up next</div>
+
+          <div class="video-list">
+            <div class="video-item active" data-title="A slow motion mountain river" data-src="https://www.w3schools.com/html/mov_bbb.mp4" style="--thumb:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80')">
+              <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80')"></div>
+              <div class="video-copy">
+                <h4>A slow motion mountain river</h4>
+                <span>4,120 views</span>
+              </div>
+            </div>
+
+            <div class="video-item" data-title="City lights at sunset" data-src="https://www.w3schools.com/html/movie.mp4" style="--thumb:url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&q=80')">
+              <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&q=80')"></div>
+              <div class="video-copy">
+                <h4>City lights at sunset</h4>
+                <span>2,801 views</span>
+              </div>
+            </div>
+
+            <div class="video-item" data-title="Forest trail in the morning" data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" style="--thumb:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80')">
+              <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80')"></div>
+              <div class="video-copy">
+                <h4>Forest trail in the morning</h4>
+                <span>8,204 views</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script>
+      const video = document.getElementById("video");
+      const playPauseBtn = document.getElementById("playPause");
+      const muteBtn = document.getElementById("mute");
+      const progressBar = document.getElementById("progressBar");
+      const timeLabel = document.getElementById("timeLabel");
+      const currentTitle = document.getElementById("currentTitle");
+      const videoItems = document.querySelectorAll(".video-item");
+
+      function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) return "0:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${String(secs).padStart(2, "0")}`;
+      }
+
+      function updateProgress() {
+        const percent = video.duration ? (video.currentTime / video.duration) * 100 : 0;
+        progressBar.style.width = `${percent}%`;
+
+        const total = video.duration ? formatTime(video.duration) : "0:00";
+        const current = formatTime(video.currentTime);
+        timeLabel.textContent = `${current} / ${total}`;
+      }
+
+      function togglePlay() {
+        if (video.paused) {
+          video.play();
+          playPauseBtn.textContent = "❚❚";
+        } else {
+          video.pause();
+          playPauseBtn.textContent = "▶";
+        }
+      }
+
+      function toggleMute() {
+        video.muted = !video.muted;
+        muteBtn.textContent = video.muted ? "🔇" : "🔊";
+      }
+
+      playPauseBtn.addEventListener("click", togglePlay);
+      muteBtn.addEventListener("click", toggleMute);
+
+      video.addEventListener("play", () => {
+        playPauseBtn.textContent = "❚❚";
+      });
+
+      video.addEventListener("pause", () => {
+        playPauseBtn.textContent = "▶";
+      });
+
+      video.addEventListener("timeupdate", updateProgress);
+      video.addEventListener("loadedmetadata", updateProgress);
+      video.addEventListener("ended", () => {
+        video.currentTime = 0;
+        playPauseBtn.textContent = "▶";
+      });
+
+      videoItems.forEach(item => {
+        item.addEventListener("click", () => {
+          videoItems.forEach(v => v.classList.remove("active"));
+          item.classList.add("active");
+
+          const title = item.dataset.title;
+          const src = item.dataset.src;
+
+          currentTitle.textContent = title;
+          video.src = src;
+          video.load();
+          video.play();
+        });
+      });
+    </script>
+  </body>
+  </html>
