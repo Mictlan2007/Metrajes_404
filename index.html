@@ -359,79 +359,89 @@
     </div>
 
     <script>
-      const uploaders = [
-        "DonNadie_404",
-        "Usuario1723",
-        "El_RaritoXD",
-        "HorrorLover<3",
-        "CazaPesadillas666",
-        "R.G.Oscar",
-        "xXCatrinaXx"
-      ];
+      const uploaderGroups = {
+        "DonNadie_404": [
+          { title: "Tengo Miedo!", url: "https://youtu.be/p7zevPed3Ss?si=FB4jr-6bAI_FypnM" },
+          { title: "Keyboard Cat! - EL ORIGINAL!", url: "https://youtu.be/J---aiyznGQ?si=7wKKtr93bBLFnoHg" },
+          { title: "Mirada Dramática", url: "https://youtu.be/y8Kyi0WNg40?si=16-cXDdtcttkvp7f" },
+          { title: "Aparición de un Duende", url: "https://youtu.be/xPghfRHZUFs?si=Lh0jyra4t4DHI80n" },
+          { title: "Body Of A Pig", url: "https://youtu.be/X72xDpv898Y?si=URfompjMCPqXnNYF" },
+          { title: "“Dining Room” o “There is Nothing”", url: "https://youtu.be/ns1SGo3WCF4?si=gpxBpzMSae3ORL7O" }
+        ],
 
-      const videos = [
-        { title: "Tengo Miedo!", url: "https://youtu.be/p7zevPed3Ss?si=FB4jr-6bAI_FypnM" },
-        { title: "Keyboard Cat! - EL ORIGINAL!", url: "https://youtu.be/J---aiyznGQ?si=7wKKtr93bBLFnoHg" },
-        { title: "Mirada Dramática", url: "https://youtu.be/y8Kyi0WNg40?si=16-cXDdtcttkvp7f" },
-        { title: "Aparición de un Duende", url: "https://youtu.be/xPghfRHZUFs?si=Lh0jyra4t4DHI80n" },
-        { title: "Body Of A Pig", url: "https://youtu.be/X72xDpv898Y?si=URfompjMCPqXnNYF" },
-        { title: "“Dining Room” o “There is Nothing”", url: "https://youtu.be/ns1SGo3WCF4?si=gpxBpzMSae3ORL7O" },
-        { title: "Experimentos sobre la Reanimación de Organismos", url: "https://youtu.be/KDqh-r8TQgs?si=yjgnS6cUqokESQQQ" },
-        { title: "Hombre se pierde en las Catacumbas de París Parte 1 de 2", url: "https://youtu.be/yxJkMlqYrys?si=fiHjDgGhfFq4tdDF" },
-        { title: "Max Headroom 1987 Incidente de Intrusión en la Señal de Transmisión", url: "https://youtu.be/oqgeM6rWSkw?si=RyZWanv83laKocdu" },
-        { title: "Hombre se pierde en las Catacumbas de París Parte 2 de 2", url: "https://youtu.be/Hi5iKa3DFnM?si=Wf6AZzm9KwX_uPFg" },
-        { title: "EXN OFICIAL: LA PASCUALITA DE CHIHUAHUA", url: "https://youtu.be/cUG6MSkIfFY?si=Elgz-DybWD6LPanA" },
-        { title: "Fantasma gritando en hotel embrujado - VERSIÓN COMPLETA", url: "https://youtu.be/BobA5ujHkvU?si=QSmSW3y77KCqtEtY" },
-        { title: "DEMONIOS REALES CAPTADOS EN CÁMARA", url: "https://youtu.be/oEVfREVGcaY?si=QlM-2LIgXBmG-Kgf" },
-        { title: "LUISON EN PARAGUAY", url: "https://youtu.be/L66UNoHyuag?si=uEzpX7TG3-2kDsj6" },
-        { title: "My Ghoul Jackson", url: "https://youtu.be/C8pOvjf6G-o?si=mB0o4prXHymM0zL6" },
-        { title: "Who's Hungry?", url: "https://youtu.be/8srEvrF90-s?si=T2kr8-pGzKltPK5V" },
-        { title: "Comercial Japones", url: "https://youtu.be/oFvtqlny43M?si=1l2EfxhuxhhoaWxD" },
-        { title: "Celulares Bailando", url: "https://youtu.be/fOq6Ydi9JEg?si=LYKbb1PnuwbovZRr" },
-        { title: "Baile de marge", url: "https://youtu.be/0r0gvDBKcfg?si=EAK-zshrv6vFzpEa" },
-        { title: "tumbas por aquí, tumbas por allá", url: "https://youtu.be/taIuoci1t00?si=utRMqpTt2V7HbK40" },
-        { title: "Criatura extraña de túnel", url: "https://youtu.be/-Cve-in80sk?si=fvmshU_bvpsAUg9b" },
-        { title: "Fantasma de Guerra Cívil", url: "https://youtu.be/LjcnXrDBmMM?si=5z04ovSgxWU41aqf" },
-        { title: "Terror en el cementerio (escenas impactantes )", url: "https://youtu.be/BU6wkoU9V5o?si=-CNwdhPi3U1nte9A" },
-        { title: "Fantasma captado por cámara de seguridad", url: "https://youtu.be/cy9OcV3MAKM?si=GSCi5WYxtN41GGpk" },
-        { title: "who wants to gnaw on human bones", url: "https://youtu.be/jdRCNM2k42o?si=5sPrNwr7IwOFzUfT" },
-        { title: "Don't Hug me I'm Scared", url: "https://youtu.be/9C_HReR_McQ?si=bnSH144dEp_3E3o8" },
-        { title: "Salad Fingers 1", url: "https://youtu.be/M3iOROuTuMA?si=Bzy3GKVQTkQdKUN2" },
-        { title: "Un Día en el Infierno/A Day in Hell (2003)", url: "https://youtu.be/YtXFudBlCCc?si=T4zqsMZAZdUzEB7l" },
-        { title: "Globo Inquietante de Bob Esponja", url: "https://youtu.be/h4As3nxIepU?si=5Y5xb4-7uZ6xrFjs" },
-        { title: "Bob esponja cae", url: "https://youtu.be/nZVf7Ic5mLw?si=ZBK88R3ZiYy5Cum6" },
-        { title: "Little Baby's Ice Cream “Este es un Momento Especial”", url: "https://youtu.be/erh2ngRZxs0?si=lZhxD57ZNjlyni7E" },
-        { title: "Five Nights At Freddy's", url: "https://youtu.be/RP4UTOek0-Y?si=QGcaGdCLGefguJSa" },
-        { title: "Five Nights At Freddy's 2 Trailer", url: "https://youtu.be/lVPONdZBh6s?si=71qEmXIJPnPTn-Te" },
-        { title: "Five Nights At Freddy's 3 Teaser Trailer", url: "https://youtu.be/hdHlIy0W4uU?si=J5x5jfsIj3T4liCe" },
-        { title: "Five Nights At Freddy's 4 Trailer", url: "https://youtu.be/A-taWymx1WI?si=B7jQ-3Z8v0vdB26x" },
-        { title: "Sister Location Trailer 1", url: "https://youtu.be/Uw4-bZkxyKQ?si=Zthf-0JLmJ1kqjeZ" },
-        { title: "Five Nights At Freddy's gameplay", url: "https://youtu.be/GS-VcKmK7Gc?si=WDh-hXd4KTXsIOwq" },
-        { title: "OTREVDAMINA", url: "https://youtu.be/3wRaQOiAyOM?si=xXG1fTGpIaS1X1pK" },
-        { title: "SCP 096", url: "https://youtu.be/WcmE8IGh1kg?si=FlXhzUmCX-Lbve_x" },
-        { title: "ROMANCE DE LA LUNA LUNA Carmen París", url: "https://youtu.be/Z4eLNavYOIg?si=9f2uGIyovBBaytP0" },
-        { title: "tutoiral", url: "https://youtu.be/wvHa2y-pKD8?si=1AOKe1HKa0UBOYXQ" },
-        { title: "gato se da cuenta de que lo graban", url: "https://youtu.be/CIL-Y7R-B7M?si=fSy-89sH_sERhj8w" },
-        { title: "CreepyPasta: Greatest Show UnEarthed", url: "https://youtu.be/fTU96mlaPq4?si=XJDJAjwmOvyj75n9" },
-        { title: "Actividad Paranormal en el colegio", url: "https://youtu.be/qAYChc2tXmk?si=XhRVLUwtMcQr7JRI" },
-        { title: "Slimyswampghost cryptids (criptidos)", url: "https://youtu.be/bHQFazMeeVM?si=7hz2YeMWSQdGRMx-" },
-        { title: "Avistamiento de Long Horse", url: "https://youtu.be/93egnzerE3s?si=uPe0Bfr0FSdDTZdT" },
-        { title: "lugares extrañamente familiares con música inquietante", url: "https://youtu.be/VqZEfqoTA7M?si=Mf5CY4D9DUqDpsLD" },
-        { title: "Imágenes Inquietantes con Música Inquietante (Unnerving Images with Unnerving music)", url: "https://youtu.be/eYbvNYmDH2E?si=OpTd0fy9-P-F6p2y" },
-        { title: "“El Charro Negro” Leyenda Captada en Cámara", url: "https://youtu.be/zaG-iZuTm5U?si=ASyZ9Qc0Y88rFRIF" },
-        { title: "LOSTLOCKED…", url: "https://youtu.be/yLov8IZBkfg?si=HMBHxOAjBDU0bgVn" },
-        { title: "Canal 5 Al Servicio de la Comunidad", url: "https://youtu.be/E7dh3LgnVPs?si=xeQhwIUqB4iC1phQ" },
-        { title: "Canal 5 Al Servicio de la Comunidad 2001", url: "https://youtu.be/FyvZ87HPFrk?si=Zuk5oagGCWXfH3NC" },
-        { title: "CORNERFOLK | The Monument Mythos", url: "https://youtu.be/SzSMHFFRi8I?si=bt-DcDHbSFoSH2V_" },
-        { title: "Petscop 15", url: "https://youtu.be/PiH04RGXYKo?si=xQ1rlgR_2kYA4JIp" },
-        { title: "Policía de Arabia Saudita se encuentran a una Bruja Real", url: "https://youtu.be/Hfp-tcfMOdU?si=BOqkmB7cXXNHO6Qf" },
-        { title: "la mona bruja en Nicaragua", url: "https://youtu.be/ui1A31-xc44?si=RBesl3x889H647hF" },
-        { title: "El Silbón en Colombia", url: "https://youtu.be/a4N40cQeWBc?si=gdCg_NkjsZCDXyWn" }
-      ];
+        "R.G.Oscar": [
+          { title: "Experimentos sobre la Reanimación de Organismos", url: "https://youtu.be/KDqh-r8TQgs?si=yjgnS6cUqokESQQQ" },
+          { title: "Hombre se pierde en las Catacumbas de París Parte 1 de 2", url: "https://youtu.be/yxJkMlqYrys?si=fiHjDgGhfFq4tdDF" },
+          { title: "Max Headroom 1987 Incidente de Intrusión en la Señal de Transmisión", url: "https://youtu.be/oqgeM6rWSkw?si=RyZWanv83laKocdu" },
+          { title: "Hombre se pierde en las Catacumbas de París Parte 2 de 2", url: "https://youtu.be/Hi5iKa3DFnM?si=Wf6AZzm9KwX_uPFg" },
+          { title: "EXN OFICIAL: LA PASCUALITA DE CHIHUAHUA", url: "https://youtu.be/cUG6MSkIfFY?si=Elgz-DybWD6LPanA" },
+          { title: "Fantasma gritando en hotel embrujado - VERSIÓN COMPLETA", url: "https://youtu.be/BobA5ujHkvU?si=QSmSW3y77KCqtEtY" }
+        ],
 
-      videos.forEach((video, index) => {
-        video.uploader = uploaders[index % uploaders.length];
-      });
+        "Usuario1723": [
+          { title: "DEMONIOS REALES CAPTADOS EN CÁMARA", url: "https://youtu.be/oEVfREVGcaY?si=QlM-2LIgXBmG-Kgf" },
+          { title: "LUISON EN PARAGUAY", url: "https://youtu.be/L66UNoHyuag?si=uEzpX7TG3-2kDsj6" },
+          { title: "My Ghoul Jackson", url: "https://youtu.be/C8pOvjf6G-o?si=mB0o4prXHymM0zL6" },
+          { title: "Who's Hungry?", url: "https://youtu.be/8srEvrF90-s?si=T2kr8-pGzKltPK5V" },
+          { title: "Comercial Japones", url: "https://youtu.be/oFvtqlny43M?si=1l2EfxhuxhhoaWxD" },
+          { title: "Celulares Bailando", url: "https://youtu.be/fOq6Ydi9JEg?si=LYKbb1PnuwbovZRr" }
+        ],
+
+        "xXCatrinaXx": [
+          { title: "Baile de marge", url: "https://youtu.be/0r0gvDBKcfg?si=EAK-zshrv6vFzpEa" },
+          { title: "tumbas por aquí, tumbas por allá", url: "https://youtu.be/taIuoci1t00?si=utRMqpTt2V7HbK40" },
+          { title: "Criatura extraña de túnel", url: "https://youtu.be/-Cve-in80sk?si=fvmshU_bvpsAUg9b" },
+          { title: "Fantasma de Guerra Cívil", url: "https://youtu.be/LjcnXrDBmMM?si=5z04ovSgxWU41aqf" },
+          { title: "Terror en el cementerio (escenas impactantes )", url: "https://youtu.be/BU6wkoU9V5o?si=-CNwdhPi3U1nte9A" },
+          { title: "Fantasma captado por cámara de seguridad", url: "https://youtu.be/cy9OcV3MAKM?si=GSCi5WYxtN41GGpk" }
+        ],
+
+        "El_RaritoXD": [
+          { title: "who wants to gnaw on human bones", url: "https://youtu.be/jdRCNM2k42o?si=5sPrNwr7IwOFzUfT" },
+          { title: "Don't Hug me I'm Scared", url: "https://youtu.be/9C_HReR_McQ?si=bnSH144dEp_3E3o8" },
+          { title: "Salad Fingers 1", url: "https://youtu.be/M3iOROuTuMA?si=Bzy3GKVQTkQdKUN2" },
+          { title: "Un Día en el Infierno/A Day in Hell (2003)", url: "https://youtu.be/YtXFudBlCCc?si=T4zqsMZAZdUzEB7l" },
+          { title: "Globo Inquietante de Bob Esponja", url: "https://youtu.be/h4As3nxIepU?si=5Y5xb4-7uZ6xrFjs" },
+          { title: "Bob esponja cae", url: "https://youtu.be/nZVf7Ic5mLw?si=ZBK88R3ZiYy5Cum6" },
+          { title: "Little Baby's Ice Cream “Este es un Momento Especial”", url: "https://youtu.be/erh2ngRZxs0?si=lZhxD57ZNjlyni7E" }
+        ],
+
+        "HorrorLover<3": [
+          { title: "Five Nights At Freddy's", url: "https://youtu.be/RP4UTOek0-Y?si=QGcaGdCLGefguJSa" },
+          { title: "Five Nights At Freddy's 2 Trailer", url: "https://youtu.be/lVPONdZBh6s?si=71qEmXIJPnPTn-Te" },
+          { title: "Five Nights At Freddy's 3 Teaser Trailer", url: "https://youtu.be/hdHlIy0W4uU?si=J5x5jfsIj3T4liCe" },
+          { title: "Five Nights At Freddy's 4 Trailer", url: "https://youtu.be/A-taWymx1WI?si=B7jQ-3Z8v0vdB26x" },
+          { title: "Sister Location Trailer 1", url: "https://youtu.be/Uw4-bZkxyKQ?si=Zthf-0JLmJ1kqjeZ" },
+          { title: "Five Nights At Freddy's gameplay", url: "https://youtu.be/GS-VcKmK7Gc?si=WDh-hXd4KTXsIOwq" },
+          { title: "OTREVDAMINA", url: "https://youtu.be/3wRaQOiAyOM?si=xXG1fTGpIaS1X1pK" },
+          { title: "SCP 096", url: "https://youtu.be/WcmE8IGh1kg?si=FlXhzUmCX-Lbve_x" },
+          { title: "ROMANCE DE LA LUNA LUNA Carmen París", url: "https://youtu.be/Z4eLNavYOIg?si=9f2uGIyovBBaytP0" },
+          { title: "tutoiral", url: "https://youtu.be/wvHa2y-pKD8?si=1AOKe1HKa0UBOYXQ" },
+          { title: "gato se da cuenta de que lo graban", url: "https://youtu.be/CIL-Y7R-B7M?si=fSy-89sH_sERhj8w" },
+          { title: "CreepyPasta: Greatest Show UnEarthed", url: "https://youtu.be/fTU96mlaPq4?si=XJDJAjwmOvyj75n9" },
+          { title: "Actividad Paranormal en el colegio", url: "https://youtu.be/qAYChc2tXmk?si=XhRVLUwtMcQr7JRI" }
+        ],
+
+        "CazaPesadillas666": [
+          { title: "Slimyswampghost cryptids (criptidos)", url: "https://youtu.be/bHQFazMeeVM?si=7hz2YeMWSQdGRMx-" },
+          { title: "Avistamiento de Long Horse", url: "https://youtu.be/93egnzerE3s?si=uPe0Bfr0FSdDTZdT" },
+          { title: "lugares extrañamente familiares con música inquietante", url: "https://youtu.be/VqZEfqoTA7M?si=Mf5CY4D9DUqDpsLD" },
+          { title: "Imágenes Inquietantes con Música Inquietante (Unnerving Images with Unnerving music)", url: "https://youtu.be/eYbvNYmDH2E?si=OpTd0fy9-P-F6p2y" },
+          { title: "“El Charro Negro” Leyenda Captada en Cámara", url: "https://youtu.be/zaG-iZuTm5U?si=ASyZ9Qc0Y88rFRIF" },
+          { title: "LOSTLOCKED…", url: "https://youtu.be/yLov8IZBkfg?si=HMBHxOAjBDU0bgVn" },
+          { title: "Canal 5 Al Servicio de la Comunidad", url: "https://youtu.be/E7dh3LgnVPs?si=xeQhwIUqB4iC1phQ" },
+          { title: "Canal 5 Al Servicio de la Comunidad 2001", url: "https://youtu.be/FyvZ87HPFrk?si=Zuk5oagGCWXfH3NC" },
+          { title: "CORNERFOLK | The Monument Mythos", url: "https://youtu.be/SzSMHFFRi8I?si=bt-DcDHbSFoSH2V_" },
+          { title: "Petscop 15", url: "https://youtu.be/PiH04RGXYKo?si=xQ1rlgR_2kYA4JIp" },
+          { title: "Policía de Arabia Saudita se encuentran a una Bruja Real", url: "https://youtu.be/Hfp-tcfMOdU?si=BOqkmB7cXXNHO6Qf" },
+          { title: "la mona bruja en Nicaragua", url: "https://youtu.be/ui1A31-xc44?si=RBesl3x889H647hF" },
+          { title: "El Silbón en Colombia", url: "https://youtu.be/a4N40cQeWBc?si=gdCg_NkjsZCDXyWn" }
+        ]
+      };
+
+      const videos = Object.entries(uploaderGroups).flatMap(([uploader, items]) =>
+        items.map((item) => ({ ...item, uploader }))
+      );
 
       const leftColumn = document.getElementById("leftColumn");
       const rightColumn = document.getElementById("rightColumn");
@@ -534,4 +544,4 @@
       renderVideos();
     </script>
   </body>
-</html>
+</html> 
