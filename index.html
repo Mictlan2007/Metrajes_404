@@ -174,7 +174,7 @@
         width: min(100%, 1760px);
         margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr 1fr;
         gap: 18px 26px;
       }
 
@@ -521,9 +521,7 @@
           video.title.toLowerCase().includes(query)
         );
 
-        const visible = filtered.slice(0, 4);
-
-        visible.forEach((video) => {
+        filtered.forEach((video) => {
           const card = document.createElement("article");
           card.className = "card";
           const videoId = getVideoIdFromUrl(video.url);
