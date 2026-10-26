@@ -20,7 +20,6 @@
         --muted: #c9d1d5;
         --blue: #4f8fe8;
         --blue-2: #3d7ed6;
-        --shadow: rgba(0,0,0,0.9);
       }
 
       * { box-sizing: border-box; }
@@ -65,19 +64,19 @@
       }
 
       .topbar {
-        height: 88px;
+        height: 90px;
         border-bottom: 1px solid var(--border);
         display: flex;
         align-items: center;
-        padding: 0 18px 0 18px;
-        gap: 16px;
-        background: rgba(0,0,0,0.14);
+        padding: 0 18px 0 20px;
+        gap: 18px;
+        background: rgba(0,0,0,0.12);
       }
 
       .logo {
         flex: 0 0 auto;
         font-family: "Creepster", cursive;
-        font-size: clamp(2.1rem, 3vw, 4.1rem);
+        font-size: clamp(2.5rem, 3.8vw, 5rem);
         letter-spacing: 0.06em;
         line-height: 1;
         color: #f6f7f8;
@@ -87,7 +86,6 @@
           0 0 16px rgba(255,255,255,0.08);
         transform: skewX(-3deg);
         white-space: nowrap;
-        margin-left: 4px;
       }
 
       .logo span {
@@ -105,15 +103,15 @@
 
       .searchbar {
         flex: 1;
-        height: 50px;
-        max-width: 940px;
+        height: 44px;
+        max-width: 930px;
         border: 1px solid rgba(255,255,255,0.15);
         background: rgba(255,255,255,0.02);
         border-radius: 3px;
         display: flex;
         align-items: center;
         padding: 0 16px;
-        margin-left: 8px;
+        margin-left: 10px;
       }
 
       .searchbar input {
@@ -121,9 +119,9 @@
         background: transparent;
         border: none;
         outline: none;
-        font-family: "VT323", monospace;
-        font-size: 2.1rem;
-        letter-spacing: 0.04em;
+        font-family: "Special Elite", monospace;
+        font-size: 1.35rem;
+        letter-spacing: 0.02em;
         color: rgba(255,255,255,0.82);
       }
 
@@ -132,15 +130,15 @@
       }
 
       .search-btn {
-        width: 114px;
-        height: 50px;
+        width: 92px;
+        height: 44px;
         border: 1px solid rgba(255,255,255,0.14);
         border-radius: 3px;
         background: rgba(255,255,255,0.04);
         color: #f1f1f1;
-        font-size: 1.1rem;
-        font-family: "VT323", monospace;
-        letter-spacing: 0.04em;
+        font-size: 0.95rem;
+        font-family: "Special Elite", monospace;
+        letter-spacing: 0.02em;
         cursor: pointer;
         margin-left: 2px;
         transition: background 0.12s ease;
@@ -153,23 +151,23 @@
       .nav {
         display: flex;
         align-items: center;
-        gap: 18px;
+        gap: 16px;
         margin-left: auto;
-        padding-right: 6px;
+        padding-right: 8px;
         white-space: nowrap;
       }
 
       .nav a {
-        font-family: "VT323", monospace;
-        font-size: 2rem;
+        font-family: "Special Elite", monospace;
+        font-size: 0.95rem;
         color: #4d98ff;
         text-decoration: none;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.02em;
         text-shadow: 0 0 4px rgba(105,160,255,0.15);
       }
 
       .content {
-        padding: 18px 16px 22px;
+        padding: 18px 18px 20px;
       }
 
       .video-grid {
@@ -177,12 +175,12 @@
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 18px 24px;
+        gap: 18px 26px;
       }
 
       .card {
         display: grid;
-        grid-template-columns: 290px 1fr;
+        grid-template-columns: 272px 1fr;
         min-height: 150px;
         background: rgba(17, 21, 26, 0.72);
         border: 1px solid rgba(255,255,255,0.12);
@@ -231,23 +229,23 @@
         max-width: 100%;
         background: var(--blue);
         color: #eef6ff;
-        padding: 11px 18px 9px;
+        padding: 10px 18px 9px;
         border-radius: 3px;
-        font-family: "VT323", monospace;
-        font-size: clamp(1.9rem, 2.3vw, 2.8rem);
-        line-height: 0.95;
-        letter-spacing: 0.03em;
+        font-family: "Special Elite", monospace;
+        font-size: clamp(1.25rem, 1.65vw, 2rem);
+        line-height: 1.15;
+        letter-spacing: 0.01em;
         box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
         text-shadow: 0 0 10px rgba(255,255,255,0.05);
       }
 
       .source {
-        margin-top: 14px;
+        margin-top: 12px;
         color: #f0f0f0;
-        font-family: "VT323", monospace;
-        font-size: clamp(1.6rem, 1.7vw, 2.3rem);
-        line-height: 1.2;
-        letter-spacing: 0.02em;
+        font-family: "Special Elite", monospace;
+        font-size: clamp(1.1rem, 1.4vw, 1.7rem);
+        line-height: 1.35;
+        letter-spacing: 0.01em;
       }
 
       .source .label {
@@ -297,13 +295,13 @@
       }
 
       .modal-title {
-        font-family: "VT323", monospace;
-        font-size: 2rem;
+        font-family: "Special Elite", monospace;
+        font-size: 1.1rem;
         color: #f0f0f0;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.01em;
       }
 
       .close-btn {
