@@ -359,6 +359,16 @@
     </div>
 
     <script>
+      const uploaders = [
+        "DonNadie_404",
+        "Usuario1723",
+        "El_RaritoXD",
+        "HorrorLover<3",
+        "CazaPesadillas666",
+        "R.G.Oscar",
+        "xXCatrinaXx"
+      ];
+
       const videos = [
         { title: "Tengo Miedo!", url: "https://youtu.be/p7zevPed3Ss?si=FB4jr-6bAI_FypnM" },
         { title: "Keyboard Cat! - EL ORIGINAL!", url: "https://youtu.be/J---aiyznGQ?si=7wKKtr93bBLFnoHg" },
@@ -419,6 +429,10 @@
         { title: "El Silbón en Colombia", url: "https://youtu.be/a4N40cQeWBc?si=gdCg_NkjsZCDXyWn" }
       ];
 
+      videos.forEach((video, index) => {
+        video.uploader = uploaders[index % uploaders.length];
+      });
+
       const leftColumn = document.getElementById("leftColumn");
       const rightColumn = document.getElementById("rightColumn");
       const searchInput = document.getElementById("searchInput");
@@ -472,7 +486,7 @@
             <div class="title-pill">${video.title}</div>
             <div class="source">
               <span class="label">YouTube</span>
-              <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
+              <span class="encounter">Encontrado por: <strong>${video.uploader}</strong></span>
             </div>
           </div>
         `;
