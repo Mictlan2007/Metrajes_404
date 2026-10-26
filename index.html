@@ -19,7 +19,6 @@
         --text: #edf3f6;
         --muted: #c9d1d5;
         --blue: #4f8fe8;
-        --blue-2: #3d7ed6;
       }
 
       * { box-sizing: border-box; }
@@ -88,10 +87,6 @@
         white-space: nowrap;
       }
 
-      .logo span {
-        display: inline-block;
-      }
-
       .search-wrap {
         flex: 1;
         display: flex;
@@ -141,11 +136,6 @@
         letter-spacing: 0.02em;
         cursor: pointer;
         margin-left: 2px;
-        transition: background 0.12s ease;
-      }
-
-      .search-btn:hover {
-        background: rgba(255,255,255,0.08);
       }
 
       .nav {
@@ -163,19 +153,25 @@
         color: #4d98ff;
         text-decoration: none;
         letter-spacing: 0.02em;
-        text-shadow: 0 0 4px rgba(105,160,255,0.15);
       }
 
       .content {
         padding: 18px 18px 20px;
       }
 
-      .video-grid {
+      .columns {
         width: min(100%, 1760px);
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 18px 26px;
+        gap: 22px 26px;
+        align-items: start;
+      }
+
+      .column {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
       }
 
       .card {
@@ -186,16 +182,8 @@
         border: 1px solid rgba(255,255,255,0.12);
         border-radius: 0;
         overflow: hidden;
-        box-shadow:
-          inset 0 0 0 1px rgba(255,255,255,0.02),
-          0 0 0 1px rgba(0,0,0,0.4);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
         cursor: pointer;
-        transition: transform 0.12s ease, border-color 0.12s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-1px);
-        border-color: rgba(255,255,255,0.2);
       }
 
       .thumb {
@@ -210,9 +198,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background:
-          linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.02)),
-          linear-gradient(to top, rgba(0,0,0,0.12), transparent);
+        background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.02));
       }
 
       .meta {
@@ -235,8 +221,6 @@
         font-size: clamp(1.25rem, 1.65vw, 2rem);
         line-height: 1.15;
         letter-spacing: 0.01em;
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
-        text-shadow: 0 0 10px rgba(255,255,255,0.05);
       }
 
       .source {
@@ -256,10 +240,6 @@
       .source .encounter {
         display: block;
         color: rgba(255,255,255,0.82);
-      }
-
-      .source strong {
-        font-weight: normal;
       }
 
       .modal {
@@ -301,7 +281,6 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        letter-spacing: 0.01em;
       }
 
       .close-btn {
@@ -329,41 +308,9 @@
         border: 0;
       }
 
-      @media (max-width: 1100px) {
-        .video-grid {
+      @media (max-width: 900px) {
+        .columns {
           grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 820px) {
-        .topbar {
-          flex-wrap: wrap;
-          height: auto;
-          padding-top: 12px;
-          padding-bottom: 12px;
-        }
-
-        .logo {
-          width: 100%;
-        }
-
-        .search-wrap {
-          width: 100%;
-          margin-top: 8px;
-        }
-
-        .nav {
-          width: 100%;
-          justify-content: flex-end;
-          margin-left: 0;
-        }
-
-        .card {
-          grid-template-columns: 220px 1fr;
-        }
-
-        .modal-box {
-          width: min(90vw, 720px);
         }
       }
     </style>
@@ -387,7 +334,10 @@
       </header>
 
       <main class="content">
-        <section id="videoGrid" class="video-grid"></section>
+        <section id="videoGrid" class="columns">
+          <div id="leftColumn" class="column"></div>
+          <div id="rightColumn" class="column"></div>
+        </section>
       </main>
     </div>
 
@@ -469,7 +419,8 @@
         { title: "El Silbón en Colombia", url: "https://youtu.be/a4N40cQeWBc?si=gdCg_NkjsZCDXyWn" }
       ];
 
-      const videoGrid = document.getElementById("videoGrid");
+      const leftColumn = document.getElementById("leftColumn");
+      const rightColumn = document.getElementById("rightColumn");
       const searchInput = document.getElementById("searchInput");
       const videoModal = document.getElementById("videoModal");
       const modalTitle = document.getElementById("modalTitle");
@@ -479,16 +430,13 @@
       function getVideoIdFromUrl(url) {
         try {
           const parsed = new URL(url);
-
           if (parsed.hostname.includes("youtu.be")) {
             return parsed.pathname.replace("/", "");
           }
-
           if (parsed.hostname.includes("youtube.com")) {
             const v = parsed.searchParams.get("v");
             if (v) return v;
           }
-
           return "";
         } catch (err) {
           return "";
@@ -513,32 +461,43 @@
         playerFrame.src = "";
       }
 
+      function createCard(video) {
+        const card = document.createElement("article");
+        card.className = "card";
+        const videoId = getVideoIdFromUrl(video.url);
+
+        card.innerHTML = `
+          <div class="thumb" style="background-image: url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg');"></div>
+          <div class="meta">
+            <div class="title-pill">${video.title}</div>
+            <div class="source">
+              <span class="label">YouTube</span>
+              <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
+            </div>
+          </div>
+        `;
+
+        card.addEventListener("click", () => openModal(video));
+        return card;
+      }
+
       function renderVideos(filter = "") {
         const query = filter.trim().toLowerCase();
-        videoGrid.innerHTML = "";
+
+        leftColumn.innerHTML = "";
+        rightColumn.innerHTML = "";
 
         const filtered = videos.filter((video) =>
           video.title.toLowerCase().includes(query)
         );
 
-        filtered.forEach((video) => {
-          const card = document.createElement("article");
-          card.className = "card";
-          const videoId = getVideoIdFromUrl(video.url);
-
-          card.innerHTML = `
-            <div class="thumb" style="background-image: url('https://img.youtube.com/vi/${videoId}/hqdefault.jpg');"></div>
-            <div class="meta">
-              <div class="title-pill">${video.title}</div>
-              <div class="source">
-                <span class="label">YouTube</span>
-                <span class="encounter">Encontrado por: <strong>DonNadie404</strong></span>
-              </div>
-            </div>
-          `;
-
-          card.addEventListener("click", () => openModal(video));
-          videoGrid.appendChild(card);
+        filtered.forEach((video, index) => {
+          const card = createCard(video);
+          if (index % 2 === 0) {
+            leftColumn.appendChild(card);
+          } else {
+            rightColumn.appendChild(card);
+          }
         });
       }
 
